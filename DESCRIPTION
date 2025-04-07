@@ -1,0 +1,23 @@
+Package: sadashboard
+Type: Package
+Title: sadashboard
+Version: 0.0.1
+Authors@R: 
+  c(person(given = "Jens Kristoffer",
+           family = "Haug",
+           role = c("aut", "cre"),
+           email = "ffe@ssb.no"),
+    person(given = "SSB",
+           role = "cph"))
+Maintainer: Jens Kristoffer Haug <ffe@ssb.no>
+Description: Quality Report for Seasonal Adjustment with RJDemetra.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Config/testthat/edition: 3
+RoxygenNote: 7.3.2
+Suggests: 
+    testthat (>= 3.0.0)
+Depends: 
+    R (>= 3.5)
+
