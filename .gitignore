@@ -268,3 +268,5 @@ po/*~
 # RStudio Connect folder
 rsconnect/
 !data/test_data.rda
+docs
+docs/
