@@ -18,7 +18,7 @@ F-test of trading days variables in RegARIMA pre-processing with RJDemetra. \cr
 Trading days variables as defined by JDemetra or as by user with pickmdl::konstruksjon().
 }
 \examples{
-time_series <- sadashboarddemo::vhi[,"47"]
+time_series <- sadashboard::vhi[,"47"]
 my_model <- RJDemetra::x13(time_series,spec="RSA5c")
 
 td_p(my_model)

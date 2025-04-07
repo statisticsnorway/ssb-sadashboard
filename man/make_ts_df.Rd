@@ -27,7 +27,7 @@ Optionally, linearized series, calendar adjusted series and 1x3 assymmetric MA-f
 }
 \examples{
 
-time_series <- sadashboarddemo::vhi[,"47"]
+time_series <- sadashboard::vhi[,"47"]
 my_model <- RJDemetra::x13(time_series,spec="RSA5c")
 make_ts_df(my_model)
 

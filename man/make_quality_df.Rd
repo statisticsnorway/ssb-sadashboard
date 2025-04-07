@@ -22,7 +22,7 @@ Second data frame contains quality indicators for pre-processing and RegARIMA-mo
 }
 \examples{
 
-time_series <- sadashboarddemo::vhi
+time_series <- sadashboard::vhi
 spec_now <- RJDemetra::x13_spec("RSA5c")
 
 my_models <- list()
