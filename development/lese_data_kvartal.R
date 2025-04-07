@@ -9,6 +9,8 @@ ledige <- tidyr::spread(df, NACE, value)
 #ledige <- vhi[,-which(nchar(colnames(hi))>5)]
 
 tidsserier <- ts(ledige,freq=4,start=c(2010,1))[,-1]
+ledige <- tidsserier
+
 
 mysa <- list()
 
