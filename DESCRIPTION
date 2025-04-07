@@ -20,4 +20,5 @@ Suggests:
     testthat (>= 3.0.0)
 Depends: 
     R (>= 3.5)
-
+URL: https://github.com/statisticsnorway/sadashboard
+BugReports: https://github.com/statisticsnorway/sadashboard/issues
