@@ -1,0 +1,86 @@
+---
+title: "`r title`"
+author: "`r author`"
+date: "`r format(Sys.time(), '%d/%m/%Y, %H:%M:%S')`"
+output: html_document 
+---
+
+```{r Loading,include=FALSE }
+
+options(kableExtra_view_html =F) ### viktig for at ikke skal printe ut i viewer i rstudio!! 
+
+
+```
+
+
+
+# Hovedtrekk {.unnumbered .tabset}
+
+Tabellen under viser overordnede kvalitesindikatorer for å vurdere sesongmessigheten i justerte og ujusterte tidsserier. *Sesong* angir om det er identifiserbart sesongmønster i den ujusterte tidsserien. Justering frarådes dersom indikatoren viser *not present*. *M7* angir andelen bevegelig sesong i forhold til stabil sesong.  Sesong- og trendkomponenter lar seg identifisere dersom denne verdien er lavere enn én. Dersom verdien er over 1,2 lar et eventuelt sesongmønster seg vanskelig identifisere. *M10* og *M11* angir henholdsvis tilfeldig og lineær bevegelse i sesongkomponenten for de siste årene. Dersom indikatorene har verdi over én kan det tyde på at justeringen er av lavere kvalitet i enden av tidsserien. *Q* angir vektet gjennomnsnitt av de elleve *M*-indikatorene fra *X-12-ARIMA*. En *Q*-verdi over én kan tilsi at dekomponeringen er av lav kvalitet. 
+
+Kolonnene *qs*, *fried* og *f_reg* angir p-verdi til tre ulike tester for om det er residualsesong i de sesongjusterte tallene. Testenes nullhypotese er at det ikke er sesongmønster i de sesongjusterte tallene. Hver av testene vurderer imidlertid  residualesesong på litt ulik måte. *qs* tester grad av autokorrelasjon i den sesongjusterte serien for observasjoner av samme måned. *fried* er en ikke-parametrisk test for residualsesong som vurderer de månedlige sesongeffektenes rangering på tvers av år. *f_reg* er en paramterisk f-test som tester for residualsesong ved å gjøre en regresjon med henblikk på måneder, for deretter å teste om regresjonskoeffisientene samlet sett er signifikant forskjellig fra null. Dersom testenes p-verdien er lavere enn 0,01 vises fargen rød, noe som indikerer at nullhypotesen sannsynligvis ikke er sann. Dersom testens p-verdi er mellom 0,01 og 0,1 vises fargen gul, noe som indikerer at nullhypotesen er usikker. Grønn indikerer at nullhypotesen ikke forkastes. 
+
+Kolonnen *f_td* gjengir p-verdi av en test for å vurdere om det er residual handledagseffekter i de sesongjusterte tallene. Testens nullhypotese er at den sesongjusterte serien ikke er påvirket av antall handledager i en måned. Den aktuelle testen er en f-test som vurderer de ulike handledagenes effekt på tidsserien ved å gjøre en regresjon med henblikk på hver av de ulike handledagene, for deretter å teste om regresjonskoeffisientene samlet sett er signifikant forskjellig fra null. Fargekoden er den samme som for testene av residualsesong over.
+
+```{r mainshow, echo=FALSE, results='asis'}
+
+
+if(!is.null(group_series)){ 
+  for(i in 1:length(group_series)){
+    
+    cat("## ",group_names[i], "{-}","\n") 
+  
+    print(group_season_table[[i]])
+  }
+}
+```
+# Figurer {.unnumbered .tabset .tabset-dropdown}
+
+
+```{r figurer_groups, eval = isTRUE(plots_included),echo=FALSE,out.width = "100%",results='asis'}
+
+### workaround: maa printe ut den foerste fordi ellers vil ikke printe ut i rmd inni loopen. Ingen aning hvorfor.
+
+if(length(group_series) == 1){
+  cat("## ", group_series[[1]][1], "{- .tabset}","\n") 
+}else{
+  cat("## ", group_names[1], "{- .tabset}","\n") 
+  cat("### ", group_series[[1]][1], "{-}","\n") 
+}
+group_plots[[1]][[1]]
+  
+level_now <- ifelse(length(group_series)==1,"## ","### ")
+
+for(i in 1:length(group_series)){
+  if(i>1){cat("## ", group_names[i], "{- .tabset}","\n")}
+  for(j in 1:length(group_series[[i]])){
+    name_now <- group_series[[i]][j]
+    if(!(i==1 & j==1)){
+      cat(level_now, name_now, "{-}","\n") 
+      print(group_plots[[i]][[j]])
+    }
+  }    
+}
+
+
+
+```
+
+
+
+# Forhåndsjustering med Reg-ARIMA {.unnumbered .tabset}
+
+Tabellen under viser sentrale kvalitetsindiktarorer knyttet til forberedende justering av tidsserien med Reg-ARIMA-modell. Kolonnen *log* indikerer om tidsserien er log-transformert. Ved log-transformasjon anvendes en multipliktativ modell. Dersom serien ikke er log-transformert anvendes en additiv modell. Kolonnen *ARIMA* viser ARIMA-modellen som anvendes i forhåndsjusteringen av serien. AIRLINE-modellen er  (0,1,1),(0,1,1). Kolonnen *Outliers* viser hvor mange ekstremverdier modellen har identifisert utover eventuelt fastsatte ekstremverdier i coronaperioden (mars 2020-mars 2022). *Td_p* gjengir p-verdi for test av nullhypotese om at det ikke er noen handledagseffekter. Denne testen er en f-test som undersøker om modellens koeffisienter knytter til handledagseffekter samlet sett er forskjellig fra null. Dersom serien ikke antar handledagseffekter vises NA. Dersom denne testen ikke lar seg beregne vises -99. Kolonnen *indRes* gjengir p-verdien for en test av om residualene i ARIMA-modellen er uavhengige. En antagelse om at residualene er uavhengige ligger til grunn for forhåndsjusteringen. Dersom residualene ikke er uavhengige kan det bety på at fremskrivningene i modellen er av lav kvalitet. Dette kan påvirke kvaliteten på sesongjusteringen for de siste observasjonene i tidsserien. Kolonnen *ok* viser om den valgte ARIMA-modellen tilfredsstiller pickmdl()-kriteriene ved estimeringstidspunktet. Kolonnen *ok_final* viser om ARIMA-modellen tilfredsstiller pickmdl()-kriteriene når også observasjoner etter estimeringstidspunktet tas i betraktning.  Dersom ARIMA-modellen estimeres med henblikk på alle observasjoner i tidsserien, er *ok* og *ok_final* det samme. Kolonnen *mdl_nr* viser hvilken av de fem modellene i pickmdl()-listen modellen som er valgt. 1 står for AIRLINE-modellen, 2-5 står for en av de øvrige modellene i pickmdl()-listen, 6 står for en modell valgt med automodell().  
+
+```{r arimashow, echo=FALSE,results='asis'}
+
+if(!is.null(group_series)){ 
+  for(i in 1:length(group_series)){
+    
+    cat("## ",group_names[i], "{-}","\n") 
+  
+    print(group_arima_table[[i]])
+  }
+}
+```
+
