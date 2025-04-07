@@ -2,7 +2,7 @@ pandoc: 3.1.11
 pkgdown: 2.1.1
 pkgdown_sha: ~
 articles: {}
-last_built: 2025-04-07T08:12Z
+last_built: 2025-04-07T08:14Z
 urls:
   reference: https://fictional-train-nrnzmge.pages.github.io/reference
   article: https://fictional-train-nrnzmge.pages.github.io/articles
