@@ -34,22 +34,22 @@ make_plot_fig  <-function(models_in,series_now,plot_start = NULL,linearized=F,ca
       ts_df <- dplyr::filter(ts_df,date>=plot_start)
     }
 
-    plot_now <- plotly::plot_ly(ts_df,type= 'scatter',mode='lines') %>%
-      plotly::layout(xaxis=list(title=""),yaxis=list(title="")) %>%
+    plot_now <- plotly::plot_ly(ts_df,type= 'scatter',mode='lines')|>
+      plotly::layout(xaxis=list(title=""),yaxis=list(title=""))|>
       plotly::add_trace(x = ~date, y = ~Ujust,name="Ujust",line=list(color="lightslategrey", width=1))
     if(isTRUE(cal_adjust)){
-      plot_now <- plot_now %>%
+      plot_now <- plot_now|>
         plotly::add_trace(x = ~date, y = ~cal_adjust,name="Cal_adjust",line=list(color="forestgreen",  width=1))
     }
     if(isTRUE(linearized)){
-      plot_now <- plot_now %>%
+      plot_now <- plot_now|>
         plotly::add_trace(x = ~date, y = ~B1,name="Linearized",line=list(dash = "dot",color="grey",  width=1))
     }
-    plot_now <- plot_now %>%
-      plotly::add_trace(x = ~date, y = ~SA,name="SA",line=list(color="darkblue")) %>%
+    plot_now <- plot_now|>
+      plotly::add_trace(x = ~date, y = ~SA,name="SA",line=list(color="darkblue"))|>
       plotly::add_trace(x = ~date, y = ~Trend,name="Trend",line=list(color="tomato"))
     if(isTRUE(ma_filter)){
-      plot_now <- plot_now %>%
+      plot_now <- plot_now|>
         plotly::add_trace(x = ~date, y = ~MA_filter,name="MA_filter",line=list(color="orange",dash="dot"))
     }
 

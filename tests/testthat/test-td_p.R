@@ -1,7 +1,7 @@
 test_that("td_p works for monthly and quarterly data ", {
 
-  data_monthly <- sadashboarddemo::vhi[,"47"]
-  data_quarterly <- sadashboarddemo::ledige_stillinger[,"01-03"]
+  data_monthly <- sadashboard::vhi[,"47"]
+  data_quarterly <- sadashboard::ledige[,"01-03"]
 
   spec_wd <- RJDemetra::x13_spec("RSA3",tradingdays.option="WorkingDays")
   spec_td <- RJDemetra::x13_spec("RSA3",tradingdays.option="TradingDays")

@@ -56,7 +56,7 @@ of seasonally adjusted time series.
 }
 \examples{
 
-time_series <- sadashboarddemo::vhi
+time_series <- sadashboard::vhi
 spec_now <- RJDemetra::x13_spec("RSA5c")
 
 my_models <- list()
@@ -75,7 +75,7 @@ for(i in 1:ncol(time_series)){
 names(my_models) <- colnames(time_series)
 
 # Grouping of models
-group_key <- c("45","46",paste0("47.",1:7),"47.9")
+group_key <- c(paste0("47.",1:7),"47.9")
 groups_now <- lapply(group_key,
                  function(x){colnames(time_series)[which(grepl(x,colnames(time_series)))]})
 names(groups_now) <- group_key

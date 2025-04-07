@@ -1,7 +1,7 @@
 test_that("make_quality_df works well", {
 
-  data_monthly <- sadashboarddemo::vhi[,"47"]
-  data_quarterly <- sadashboarddemo::ledige_stillinger[,"01-03"]
+  data_monthly <- sadashboard::vhi[,"47"]
+  data_quarterly <- sadashboard::ledige[,"01-03"]
   spec_td <- RJDemetra::x13_spec("RSA3",tradingdays.option="TradingDays")
   spec_wd <- RJDemetra::x13_spec("RSA3",tradingdays.option="WorkingDays")
   model_td <- pickmdl::x13_pickmdl(data_monthly,spec=spec_td)

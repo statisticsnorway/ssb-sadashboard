@@ -12,6 +12,7 @@ vhi <- vhi[,-which(nchar(colnames(vhi))>5)]
 
 
 tidsserier <- ts(vhi,freq=12,start=c(2000,1))[,-1]
+vhi <- tidsserier
 
 mysa <- list()
 
@@ -28,12 +29,12 @@ for(i in 1:ncol(tidsserier)){
 
 names(mysa) <- colnames(tidsserier)
 
-groups_series <- c("45","46",paste0("47.",1:7),"47.9")
+groups_series <- c(paste0("47.",1:7),"47.9")
 groups_now <- lapply(groups_series,function(x){colnames(tidsserier)[which(grepl(x,colnames(tidsserier)))]})
 names(groups_now) <- groups_series
 
 
-to_html <- "/home/onyxia/work/sadashboarddemo/development/my_report.html"
+to_html <- "/home/onyxia/work/sadashboard/development/my_report.html"
 
 sa_quality_report(mysa,report_file=to_html,title_report = "Testrapport",author_report="S811",group_series=groups_now,
                   linearized=TRUE,ma_filter=TRUE,cal_adjust=TRUE)

@@ -32,7 +32,7 @@ names(mysa) <- colnames(tidsserier)
 #names(groups_now) <- groups_series
 
 
-to_html <- "/home/onyxia/work/sadashboarddemo/development/my_report.html"
+to_html <- "/home/onyxia/work/sadashboard/development/my_report.html"
 
 sa_quality_report(mysa,report_file=to_html,title_report = "Testrapport",author_report="S811",#group_series=groups_now,
                   linearized=TRUE,ma_filter=TRUE,cal_adjust=TRUE)

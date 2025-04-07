@@ -43,39 +43,39 @@ make_table_fig <- function(view_now,series_now=NULL){
 
   if("M7" %in% colnames(view_now)){
 
-    table_now <- kableExtra::kable_styling(kableExtra::kbl(view_now,caption="*Kvalitetsindikatorer Sesong*",row.names = TRUE)) %>%
-      kableExtra::kable_classic() %>%
-      kableExtra::add_header_above(c(" "= 3,"Komponenter"=4,"Residualsesong" =3,"td" = 1))%>%
+    table_now <- kableExtra::kable_styling(kableExtra::kbl(view_now,caption="*Kvalitetsindikatorer Sesong*",row.names = TRUE)) |>
+      kableExtra::kable_classic() |>
+      kableExtra::add_header_above(c(" "= 3,"Komponenter"=4,"Residualsesong" =3,"td" = 1))|>
       kableExtra::column_spec(3,color= ifelse(is.na(view_now$Sesong),"black",
-                                              ifelse(view_now$Sesong=="Present","green",ifelse(view_now$Sesong =="ProbablyNone", "orange","red")))) %>%
+                                              ifelse(view_now$Sesong=="Present","green",ifelse(view_now$Sesong =="ProbablyNone", "orange","red")))) |>
       kableExtra::column_spec(4,background=ifelse(is.na(view_now$M7) | is.nan(view_now$M7),"grey",
-                                                  ifelse(view_now$M7 == 0,"khaki", ifelse(view_now$M7 < 1,"yellowgreen","tomato"))))  %>%
+                                                  ifelse(view_now$M7 == 0,"khaki", ifelse(view_now$M7 < 1,"yellowgreen","tomato"))))  |>
       kableExtra::column_spec(5,background=ifelse(is.na(view_now$M10)|is.nan(view_now$M10),"grey",
-                                                  ifelse(view_now$M10 == 0,"khaki", ifelse(view_now$M10 < 1,"yellowgreen",ifelse(view_now$M10 <=1.2,"orange","tomato")))))  %>%
+                                                  ifelse(view_now$M10 == 0,"khaki", ifelse(view_now$M10 < 1,"yellowgreen",ifelse(view_now$M10 <=1.2,"orange","tomato")))))  |>
       kableExtra::column_spec(6,background=ifelse(is.na(view_now$M11)|is.nan(view_now$M11),"grey",
-                                                  ifelse(view_now$M11 == 0,"khaki", ifelse(view_now$M11 < 1,"yellowgreen",ifelse(view_now$M11 <=1.2,"orange","tomato"))))) %>%
+                                                  ifelse(view_now$M11 == 0,"khaki", ifelse(view_now$M11 < 1,"yellowgreen",ifelse(view_now$M11 <=1.2,"orange","tomato"))))) |>
       kableExtra::column_spec(7,background=ifelse(is.na(view_now$Q)|is.nan(view_now$Q),"grey",
-                                                  ifelse(view_now$Q == 0,"khaki",ifelse(view_now$Q < 1,"yellowgreen",ifelse(view_now$Q <=1.2,"orange","tomato")))))  %>%
+                                                  ifelse(view_now$Q == 0,"khaki",ifelse(view_now$Q < 1,"yellowgreen",ifelse(view_now$Q <=1.2,"orange","tomato")))))  |>
       kableExtra::column_spec(8,background=ifelse(is.na(view_now$qs)|is.nan(view_now$qs),"grey",
-                                                  ifelse(view_now$qs >=0.1,"yellowgreen",ifelse(view_now$qs < 0.01,"tomato","orange")))) %>%
+                                                  ifelse(view_now$qs >=0.1,"yellowgreen",ifelse(view_now$qs < 0.01,"tomato","orange")))) |>
       kableExtra::column_spec(9,background=ifelse(is.na(view_now$fried)|is.nan(view_now$fried),"grey",
-                                                  ifelse(view_now$fried >=0.1,"yellowgreen",ifelse(view_now$fried < 0.01,"tomato","orange")))) %>%
+                                                  ifelse(view_now$fried >=0.1,"yellowgreen",ifelse(view_now$fried < 0.01,"tomato","orange")))) |>
       kableExtra::column_spec(10,background=ifelse(is.na(view_now$f_reg)|is.nan(view_now$f_reg),"grey",
-                                                   ifelse(view_now$f_reg >=0.1,"yellowgreen",ifelse(view_now$f_reg < 0.01,"tomato","orange")))) %>%
+                                                   ifelse(view_now$f_reg >=0.1,"yellowgreen",ifelse(view_now$f_reg < 0.01,"tomato","orange")))) |>
       kableExtra::column_spec(11,background=ifelse(is.na(view_now$f_td)|is.nan(view_now$f_td),"grey",
                                                    ifelse(view_now$f_td >=0.1,"yellowgreen",ifelse(view_now$f_td < 0.01,"tomato","orange"))))
   }
   if("ARIMA" %in% colnames(view_now)){
 
-    table_now <- kableExtra::kable_styling(kableExtra::kbl(view_now,caption="*Kvalitetsindikatorer ARIMA*",row.names = TRUE)) %>%
-      kableExtra::kable_classic() %>%
-      kableExtra::add_header_above(c(" "= 5,"Koeffisienter"=1,"Residualer" =1,"Pickmdl()"=3) )%>%
+    table_now <- kableExtra::kable_styling(kableExtra::kbl(view_now,caption="*Kvalitetsindikatorer ARIMA*",row.names = TRUE)) |>
+      kableExtra::kable_classic() |>
+      kableExtra::add_header_above(c(" "= 5,"Koeffisienter"=1,"Residualer" =1,"Pickmdl()"=3) )|>
       kableExtra::column_spec(6,background=ifelse(is.na(view_now$Td_p)|is.nan(view_now$Td_p) ,"grey",ifelse(view_now$Td_p == -99,"lightgrey",
-                                                                                                            ifelse(view_now$Td_p < 0.01,"yellowgreen",ifelse(view_now$Td_p >= 0.10,"tomato","orange"))))) %>%
+                                                                                                            ifelse(view_now$Td_p < 0.01,"yellowgreen",ifelse(view_now$Td_p >= 0.10,"tomato","orange"))))) |>
       kableExtra::column_spec(7,background=ifelse(is.na(view_now$indRes)|is.nan(view_now$indRes), "grey",
-                                                  ifelse(view_now$indRes >=0.10,"yellowgreen",ifelse(view_now$indRes < 0.01,"tomato","orange"))))  %>%
-      kableExtra::column_spec(8,background=ifelse(is.na(view_now$ok),"grey",ifelse(view_now$ok==TRUE,"yellowgreen","tomato")))%>%
-      kableExtra::column_spec(9,background=ifelse(is.na(view_now$ok_final),"grey",ifelse(view_now$ok_final==TRUE,"yellowgreen","tomato"))) %>%
+                                                  ifelse(view_now$indRes >=0.10,"yellowgreen",ifelse(view_now$indRes < 0.01,"tomato","orange"))))  |>
+      kableExtra::column_spec(8,background=ifelse(is.na(view_now$ok),"grey",ifelse(view_now$ok==TRUE,"yellowgreen","tomato")))|>
+      kableExtra::column_spec(9,background=ifelse(is.na(view_now$ok_final),"grey",ifelse(view_now$ok_final==TRUE,"yellowgreen","tomato"))) |>
       kableExtra::column_spec(10,background=ifelse(is.na(view_now$mdl_nr),"grey",ifelse(view_now$mdl_nr==1,"lemonchiffon",
                                                                                         ifelse(view_now$mdl_nr %in% 2:5,"khaki","burlywood"))))
   }

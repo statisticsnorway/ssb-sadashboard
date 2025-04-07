@@ -24,7 +24,7 @@
 #' @export
 #' @examples
 #'
-#' time_series <- sadashboarddemo::vhi
+#' time_series <- sadashboard::vhi
 #' spec_now <- RJDemetra::x13_spec("RSA5c")
 #'
 #' my_models <- list()
@@ -43,7 +43,7 @@
 #' names(my_models) <- colnames(time_series)
 #'
 #' # Grouping of models
-#' group_key <- c("45","46",paste0("47.",1:7),"47.9")
+#' group_key <- c(paste0("47.",1:7),"47.9")
 #' groups_now <- lapply(group_key,
 #'                  function(x){colnames(time_series)[which(grepl(x,colnames(time_series)))]})
 #' names(groups_now) <- group_key
@@ -98,7 +98,7 @@ sa_quality_report <- function(models_in, report_file, title=NULL ,author = NULL,
     group_plots <- lapply(group_plots,function(x){make_taglist(x)})
   }
 
-  where_rmd <- paste0(system.file(package="sadashboarddemo"),"/Show_SA_function.Rmd")
+  where_rmd <- paste0(system.file(package="sadashboard"),"/Show_SA_function.Rmd")
 
   Sys.setenv(RSTUDIO_PANDOC="/usr/lib/rstudio/resources/app/bin/quarto/bin/tools/x86_64/")
 
