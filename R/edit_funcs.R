@@ -388,6 +388,8 @@ add_constraint <- function(dt, constraint, type = "chr", default = ""){
 #'
 #' @return the edited data as a matrix or data.frame.
 #'
+#' @importFrom dplyr %>%
+#'
 #' @examples
 #' if(interactive()) {
 #'
@@ -439,7 +441,7 @@ data_edit_ssb <- function(x = NULL,
 
   # RSTUDIO ADDIN/DATA
   if(Sys.getenv("RSTUDIO") == "1") {
-    context <- getActiveDocumentContext()$selection[[1]]$text
+    context <- rstudioapi::getActiveDocumentContext()$selection[[1]]$text
     # CHECK DATA_EDIT() CALL HIGHLIGHTED
     if(nzchar(context)) {
       if(!exists(context, envir = envir)) {
@@ -725,7 +727,7 @@ data_edit_ssb <- function(x = NULL,
     )
 
     # DATA OUTPUT - DATA ENTIRE
-    dataOutputServer(
+    DataEditR::dataOutputServer(
       "output-update",
       data = shiny::reactive({values$data}),
       save_as = save_as,
