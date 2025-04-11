@@ -9,7 +9,8 @@ df <- dplyr::filter(df,NACE %in% ok_nace)
 
 vhi <- tidyr::spread(df, NACE, value)
 vhi <- vhi[,-which(nchar(colnames(vhi))>5)]
-
+vhi <- vhi[,grepl("47",colnames(vhi))]
+vhi <- vhi[,-2]
 
 tidsserier <- ts(vhi,freq=12,start=c(2000,1))[,-1]
 vhi <- tidsserier
