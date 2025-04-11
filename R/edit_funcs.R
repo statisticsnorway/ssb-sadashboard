@@ -1,3 +1,23 @@
+#' Function from fellesr to to get user agent
+#'
+#' @returns User agent
+#' @noRd
+#' @keywords Internal
+user_agent <- function() {
+
+  user_agent <- paste0(Sys.getenv("DAPLA_ENVIRONMENT"), "-",
+                       Sys.getenv("DAPLA_REGION"), "-",
+                       Sys.getenv("DAPLA_SERVICE"), "-",
+                       httr:::default_ua())
+
+  if (Sys.getenv("DAPLA_REGION") == "" | Sys.getenv("DAPLA_ENVIRONMENT") == "" | Sys.getenv("DAPLA_SERVICE") == ""){
+    warning("Ukjent miljø. Denne funksjonene fungerer kun på Dapla og i produksjonssonen")
+  }
+
+  return(user_agent)
+}
+
+
 #' Function from fellesr to fetch initials of user (Internal)
 #'
 #' @returns String with initials
@@ -126,7 +146,8 @@ write_yaml_constraints <- function(df, path) {
   }
 
   # Convert the YAML content to a YAML string
-  yaml_string <- yaml::as.yaml(yaml_content, handlers = list(logical = verbatim_logical))
+  yaml_string <- yaml::as.yaml(yaml_content,
+                               handlers = list(logical = yaml::verbatim_logical))
 
   # Write the YAML string to the file
   write(yaml_string, file = path)
@@ -288,10 +309,11 @@ add_constraint <- function(dt, constraint, type = "chr", default = ""){
 
 #' An interactive editor for viewing, entering and editing data
 #'
-#' code{data_edit_ssb} is an adjusted version of the code{data_edit} function by Dillon Hammill. It is a shiny application built on \code{rhandsontable} that is
-#' designed to make it easy to interactively view, enter or edit data without
-#' any coding. \code{data_edit} is also a wrapper for any reading or writing
-#' function to make it easy to interactively update data saved to file.
+#' \code{data_edit_ssb} is an adjusted version of the \code{data_edit} function
+#' by Dillon Hammill. It is a shiny application built on \code{rhandsontable}
+#' that is designed to make it easy to interactively view, enter or edit data
+#' without any coding. \code{data_edit} is also a wrapper for any reading or
+#' writing function to make it easy to interactively update data saved to file.
 #'
 #' @param x a matrix, data.frame, data.table or the name of a csv file to edit.
 #'   Tibbles are also supported but will be coerced to data.frames. An empty
@@ -366,6 +388,8 @@ add_constraint <- function(dt, constraint, type = "chr", default = ""){
 #'
 #' @return the edited data as a matrix or data.frame.
 #'
+#' @importFrom dplyr %>%
+#'
 #' @examples
 #' if(interactive()) {
 #'
@@ -417,7 +441,7 @@ data_edit_ssb <- function(x = NULL,
 
   # RSTUDIO ADDIN/DATA
   if(Sys.getenv("RSTUDIO") == "1") {
-    context <- getActiveDocumentContext()$selection[[1]]$text
+    context <- rstudioapi::getActiveDocumentContext()$selection[[1]]$text
     # CHECK DATA_EDIT() CALL HIGHLIGHTED
     if(nzchar(context)) {
       if(!exists(context, envir = envir)) {
@@ -511,17 +535,17 @@ data_edit_ssb <- function(x = NULL,
       shiny::column(
         7,
         style = "padding-right: 5px;",
-        dataInputUI("input1",
+        DataEditR::dataInputUI("input1",
                     cellWidths = c("50%", "50%"))
       ),
       shiny::column(
         5,
         style = "padding-left: 5px; margin-top: 35px;",
-        dataSelectUI("select1"),
-        dataFilterUI("filter1"),
-        dataSyncUI("sync1"),
-        dataOutputUI("output-active"),
-        dataOutputUI("output-update",
+        DataEditR::dataSelectUI("select1"),
+        DataEditR::dataFilterUI("filter1"),
+        DataEditR::dataSyncUI("sync1"),
+        DataEditR::dataOutputUI("output-active"),
+        DataEditR::dataOutputUI("output-update",
                      icon = "save"),
         shinyjs::hidden(
           shinyBS::bsButton(
@@ -540,7 +564,7 @@ data_edit_ssb <- function(x = NULL,
     shiny::fluidRow(
       shiny::column(
         12,
-        dataEditUI("edit1"),
+        DataEditR::dataEditUI("edit1"),
         htmltools::br()
       )
     )
@@ -578,7 +602,7 @@ data_edit_ssb <- function(x = NULL,
     )
 
     # DATA INPUT
-    data_input <- dataInputServer(
+    data_input <- DataEditR::dataInputServer(
       "input1",
       data = data,
       read_fun = read_fun,
@@ -601,7 +625,7 @@ data_edit_ssb <- function(x = NULL,
     # FILTERS ALWAYS RESET ON DATA SYNC
 
     # DATA SELECT
-    data_select <- dataSelectServer(
+    data_select <- DataEditR::dataSelectServer(
       "select1",
       data = shiny::reactive(values$data),
       hide = hide,
@@ -609,7 +633,7 @@ data_edit_ssb <- function(x = NULL,
     )
 
     # DATA FILTER
-    data_filter <- dataFilterServer(
+    data_filter <- DataEditR::dataFilterServer(
       "filter1",
       data = shiny::reactive(values$data),
       hide = hide,
@@ -654,7 +678,7 @@ data_edit_ssb <- function(x = NULL,
     })
 
     # DATAEDIT - ENTIRE DATASET
-    data_update <- dataEditServer(
+    data_update <- DataEditR::dataEditServer(
       "edit1",
       data = shiny::reactive({values$data_active}),
       col_bind = NULL, # endless loop!
@@ -676,7 +700,7 @@ data_edit_ssb <- function(x = NULL,
     })
 
     # SYNC
-    data_sync <- dataSyncServer(
+    data_sync <- DataEditR::dataSyncServer(
       "sync1",
       data = shiny::reactive(values$data),
       data_subset = shiny::reactive(values$data_active),
@@ -692,7 +716,7 @@ data_edit_ssb <- function(x = NULL,
     })
 
     # DATA OUTPUT - DATA ACTIVE
-    dataOutputServer(
+    DataEditR::dataOutputServer(
       "output-active",
       data = shiny::reactive({values$data_active}),
       save_as = save_as,
@@ -703,7 +727,7 @@ data_edit_ssb <- function(x = NULL,
     )
 
     # DATA OUTPUT - DATA ENTIRE
-    dataOutputServer(
+    DataEditR::dataOutputServer(
       "output-update",
       data = shiny::reactive({values$data}),
       save_as = save_as,
@@ -782,7 +806,7 @@ data_edit_ssb <- function(x = NULL,
 
   # DIALOG
   if(grepl("^d", viewer, ignore.case = TRUE)){
-    viewer <- dialogViewer("DataEditR",
+    viewer <- shiny::dialogViewer("DataEditR",
                            width = viewer_width,
                            height = viewer_height)
     # BROWSER
@@ -791,10 +815,10 @@ data_edit_ssb <- function(x = NULL,
     # VIEWER PANE
   } else if (grepl("^v", viewer, ignore.case = TRUE) |
              grepl("^p", viewer, ignore.case = TRUE)) {
-    viewer <- paneViewer()
+    viewer <- shiny::paneViewer()
     # UNSUPPORTED VIEWER
   } else {
-    viewer <- paneViewer()
+    viewer <- shiny::paneViewer()
   }
 
   # RUN APPLICATION

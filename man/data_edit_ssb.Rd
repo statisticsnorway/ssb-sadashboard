@@ -139,10 +139,11 @@ button, set to the supplied data by default.}
 the edited data as a matrix or data.frame.
 }
 \description{
-code{data_edit_ssb} is an adjusted version of the code{data_edit} function by Dillon Hammill. It is a shiny application built on \code{rhandsontable} that is
-designed to make it easy to interactively view, enter or edit data without
-any coding. \code{data_edit} is also a wrapper for any reading or writing
-function to make it easy to interactively update data saved to file.
+\code{data_edit_ssb} is an adjusted version of the \code{data_edit} function
+by Dillon Hammill. It is a shiny application built on \code{rhandsontable}
+that is designed to make it easy to interactively view, enter or edit data
+without any coding. \code{data_edit} is also a wrapper for any reading or
+writing function to make it easy to interactively update data saved to file.
 }
 \examples{
 if(interactive()) {

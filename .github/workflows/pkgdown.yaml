@@ -31,10 +31,17 @@ jobs:
         with:
           use-public-rspm: true
 
-      - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          extra-packages: any::pkgdown, local::.
-          needs: website
+      - name: Install pak
+        run: Rscript -e 'install.packages("pak")'
+
+      - name: Install pickmdl package
+        run: Rscript -e 'pak::pkg_install(c("statisticsnorway/ssb-pickmdl", "statisticsnorway/ssb-sadashboard"))'
+
+      - name: Install dependencies
+        run: Rscript -e 'pak::local_install_dev_deps()'
+
+      - name: Install pkgdown
+        run: Rscript -e 'pak::pkg_install("pkgdown")'
 
       - name: Build site
         run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
