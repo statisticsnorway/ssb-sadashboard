@@ -10,6 +10,9 @@ Authors@R:
     person(given = "Susie",
           family= "Jentoft",
           role = "aut"),
+    person(given = "Ane",
+          family = "Seierstad",
+          role = "aut"),
     person(given = "SSB",
            role = "cph"))
 Maintainer: Jens Kristoffer Haug <ffe@ssb.no>
@@ -22,7 +25,7 @@ RoxygenNote: 7.3.2
 Suggests: 
     testthat (>= 3.0.0),
     DataEditR,
-    lubridate
+    yaml
 Depends: 
     R (>= 3.5)
 URL: https://github.com/statisticsnorway/sadashboard, https://fictional-train-nrnzmge.pages.github.io/, https://github.com/statisticsnorway/ssb-sadashboard

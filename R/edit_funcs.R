@@ -30,8 +30,8 @@ initialer_funk <- function() {
 convert_date <- function(date) {
   # Check if the date is in 'dd/mm/yyyy' format
   if (grepl("^\\d{2}/\\d{2}/\\d{4}$", date)) {
-    date <- format(lubridate::dmy(date), "%Y-%m-%d")
-    return(as.character(date))
+    date <- as.Date(date, format = "%d/%m/%Y")
+    return(format(date, "%Y-%m-%d"))
   }
 
   # Assume the date is in 'yyyy-mm-dd' format and return it as is
@@ -46,7 +46,11 @@ convert_date <- function(date) {
 #' @returns A data frame object with the constrainst data as a data.frame object
 #' @export
 read_yaml_constraints <- function(path){
-  yaml_content <- yaml.load_file(path)
+  if (!requireNamespace("yaml", quietly = TRUE)) {
+    stop("Package 'yaml' is required for this function but is not installed. Please install it before running the function agian.")
+  }
+
+  yaml_content <- yaml::yaml.load_file(path)
   df_rows <- list()
 
   # Initialize an empty list to store column names
@@ -93,6 +97,10 @@ read_yaml_constraints <- function(path){
 #' @returns NULL
 #' @export
 write_yaml_constraints <- function(df, path) {
+  if (!requireNamespace("yaml", quietly = TRUE)) {
+    stop("Package 'yaml' is required for this function but is not installed. Please install it before running the function agian.")
+  }
+
   # Create an empty list to store YAML content
   yaml_content <- list()
 
@@ -118,7 +126,7 @@ write_yaml_constraints <- function(df, path) {
   }
 
   # Convert the YAML content to a YAML string
-  yaml_string <- as.yaml(yaml_content, handlers = list(logical = verbatim_logical))
+  yaml_string <- yaml::as.yaml(yaml_content, handlers = list(logical = verbatim_logical))
 
   # Write the YAML string to the file
   write(yaml_string, file = path)
@@ -157,6 +165,8 @@ get_url <- function(port){
     domain <- gsub("/+$", "", Sys.getenv('JUPYTERHUB_HTTP_REFERER'))     # Clean trailing /
     usr <- Sys.getenv('JUPYTERHUB_SERVICE_PREFIX', '/')
     app_url <- paste0(domain, usr, "proxy/", port, "/")
+  } else {
+    stop("data_edit_ssb() is designed to be run on SSBs Data platform. Please use data_edit() instead.")
   }
   app_url
 }
@@ -204,6 +214,11 @@ get_column_list <- function (dt){
 #' @returns Updated data frame object
 #' @export
 edit_constraints <- function(dt){
+
+  if (!requireNamespace("DataEditR", quietly = TRUE)) {
+    stop("Package 'DataEditR' is required for this function but is not installed. Please install it before running the function agian.")
+  }
+
   port <- get_port()
   url <- get_url(port)
   message(cat("Edit data at: ", url, "\n"))
@@ -230,6 +245,11 @@ edit_constraints <- function(dt){
 #' @returns Updated constraint data frame object
 #' @export
 add_constraint <- function(dt, constraint, type = "chr", default = ""){
+
+  if (!requireNamespace("DataEditR", quietly = TRUE)) {
+    stop("Package 'DataEditR' is required for this function but is not installed. Please install it before running the function agian.")
+  }
+
   port <- get_port()
   url <- get_url(port)
 
@@ -268,7 +288,7 @@ add_constraint <- function(dt, constraint, type = "chr", default = ""){
 
 #' An interactive editor for viewing, entering and editing data
 #'
-#' code{data_edit} is a shiny application built on \code{rhandsontable} that is
+#' code{data_edit_ssb} is an adjusted version of the code{data_edit} function by Dillon Hammill. It is a shiny application built on \code{rhandsontable} that is
 #' designed to make it easy to interactively view, enter or edit data without
 #' any coding. \code{data_edit} is also a wrapper for any reading or writing
 #' function to make it easy to interactively update data saved to file.
@@ -346,18 +366,6 @@ add_constraint <- function(dt, constraint, type = "chr", default = ""){
 #'
 #' @return the edited data as a matrix or data.frame.
 #'
-#' @importFrom rstudioapi getActiveDocumentContext
-#' @importFrom htmltools img span br div HTML
-#' @importFrom shiny runGadget dialogViewer browserViewer paneViewer splitLayout
-#'   fluidPage column stopApp reactiveValues actionButton insertUI
-#' @importFrom shinyjs useShinyjs hidden show
-#' @importFrom bslib bs_theme
-#' @importFrom miniUI gadgetTitleBar
-#' @importFrom shinyBS bsButton updateButton addTooltip
-#' @importFrom rhandsontable %>%
-#'
-#' @author Dillon Hammill, \email{Dillon.Hammill@anu.edu.au}
-#'
 #' @examples
 #' if(interactive()) {
 #'
@@ -395,6 +403,10 @@ data_edit_ssb <- function(x = NULL,
                           cancel,
                           port,
                           ...) {
+
+  if (!requireNamespace("DataEditR", quietly = TRUE)) {
+    stop("Package 'DataEditR' is required for this function but is not installed. Please install it before running the function agian.")
+  }
 
   # DATA ENVIRONMENT -----------------------------------------------------------
 
