@@ -78,30 +78,1235 @@ Only available if decomposition.a8 and decomposition.b1 are included in userdefi
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">time_series</span> <span class="op">&lt;-</span> <span class="fu">sadashboard</span><span class="fu">::</span><span class="va"><a href="vhi.html">vhi</a></span><span class="op">[</span>,<span class="st">"47"</span><span class="op">]</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in `[.default`(sadashboard::vhi, , "47"):</span> subscript out of bounds</span>
+<span class="r-in"><span><span class="va">time_series</span> <span class="op">&lt;-</span> <span class="fu">sadashboard</span><span class="fu">::</span><span class="va"><a href="vhi.html">vhi</a></span><span class="op">[</span>,<span class="st">"47.3"</span><span class="op">]</span></span></span>
 <span class="r-in"><span><span class="va">my_model</span> <span class="op">&lt;-</span> <span class="fu">RJDemetra</span><span class="fu">::</span><span class="fu"><a href="https://rjdverse.github.io/rjdemetra/reference/x13.html" class="external-link">x13</a></span><span class="op">(</span><span class="va">time_series</span>,spec<span class="op">=</span><span class="st">"RSA5c"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'time_series' not found</span>
 <span class="r-in"><span><span class="fu">make_ts_df</span><span class="op">(</span><span class="va">my_model</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'my_model' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           date Ujust        SA     Trend</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   2000-01-01  61.7  66.53686  65.80784</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   2000-02-01  58.7  65.38606  66.33435</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   2000-03-01  66.2  67.06597  67.00253</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   2000-04-01  66.5  68.22942  67.83538</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   2000-05-01  72.3  67.81759  68.79550</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6   2000-06-01  78.2  70.37356  69.83697</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7   2000-07-01  79.5  71.40106  71.01178</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8   2000-08-01  76.7  71.61961  72.27703</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9   2000-09-01  73.4  73.90273  73.58235</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10  2000-10-01  73.2  74.04852  74.88170</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11  2000-11-01  72.5  76.50145  76.04087</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12  2000-12-01  73.3  78.02546  76.96036</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13  2001-01-01  62.0  66.28366  67.14788</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14  2001-02-01  59.1  68.43735  67.40136</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15  2001-03-01  65.7  66.91021  67.37865</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16  2001-04-01  66.2  67.22645  67.17397</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17  2001-05-01  70.8  67.00057  66.83886</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18  2001-06-01  76.5  69.00205  66.41803</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19  2001-07-01  73.5  65.45846  65.93716</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20  2001-08-01  70.9  65.96097  65.54065</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21  2001-09-01  64.6  65.51849  65.40120</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22  2001-10-01  64.5  64.79819  65.59880</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23  2001-11-01  62.4  65.53258  66.11570</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24  2001-12-01  63.1  67.12024  66.83644</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25  2002-01-01  63.3  68.64660  67.66422</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26  2002-02-01  59.0  68.52156  68.51388</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27  2002-03-01  67.9  69.30467  69.33723</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28  2002-04-01  68.3  68.98510  70.07090</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29  2002-05-01  75.7  71.35400  70.73724</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30  2002-06-01  79.0  71.95913  71.41921</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31  2002-07-01  81.3  71.87083  72.10208</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32  2002-08-01  77.8  72.51533  72.67819</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33  2002-09-01  72.5  72.65902  73.10361</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34  2002-10-01  73.3  73.99789  73.43029</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35  2002-11-01  70.8  74.47508  73.75440</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36  2002-12-01  69.2  73.24960  74.14027</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37  2003-01-01  60.6  65.92079  66.64201</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38  2003-02-01  57.7  67.33642  66.82637</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39  2003-03-01  65.9  67.36044  66.88374</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40  2003-04-01  66.4  67.52973  66.83689</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41  2003-05-01  66.9  63.25074  66.76072</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42  2003-06-01  72.3  65.16255  66.69906</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43  2003-07-01  75.1  66.68248  66.67906</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44  2003-08-01  72.5  67.40875  66.74988</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45  2003-09-01  67.4  67.07451  66.85231</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46  2003-10-01  67.2  67.34239  66.91738</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47  2003-11-01  62.5  66.40758  66.94310</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48  2003-12-01  63.1  66.62308  67.04741</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49  2004-01-01  63.3  69.69829  67.37976</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 50  2004-02-01  59.0  67.06786  68.01583</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 51  2004-03-01  67.9  68.84960  68.84360</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 52  2004-04-01  68.3  69.54954  69.70906</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 53  2004-05-01  75.7  71.35827  70.50433</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 54  2004-06-01  79.0  71.09510  71.20120</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 55  2004-07-01  81.3  72.00292  71.83355</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 56  2004-08-01  77.8  71.55975  72.41900</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 57  2004-09-01  72.5  72.93781  72.92910</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 58  2004-10-01  73.3  73.66544  73.32790</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59  2004-11-01  70.8  74.15025  73.58398</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 60  2004-12-01  69.2  73.68818  73.66126</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 61  2005-01-01  64.1  70.85780  73.58726</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 62  2005-02-01  62.0  72.98993  73.52159</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 63  2005-03-01  71.6  73.49185  73.62593</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 64  2005-04-01  73.0  74.45149  74.00330</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 65  2005-05-01  78.9  73.68725  74.62797</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 66  2005-06-01  84.0  75.72449  75.39016</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 67  2005-07-01  86.8  76.62208  76.21270</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 68  2005-08-01  84.1  77.01818  76.99673</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 69  2005-09-01  80.1  80.23228  77.68746</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 70  2005-10-01  78.0  78.41173  78.27894</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 71  2005-11-01  72.1  76.03503  78.81156</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 72  2005-12-01  74.7  79.95194  79.32178</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 73  2006-01-01  71.5  78.81446  79.80437</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 74  2006-02-01  68.6  80.62073  80.20889</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 75  2006-03-01  78.6  80.70550  80.56368</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 76  2006-04-01  79.1  81.40797  80.89629</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 77  2006-05-01  86.8  80.53974  81.23504</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 78  2006-06-01  90.6  80.89557  81.49645</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 79  2006-07-01  93.3  82.30729  81.63701</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 80  2006-08-01  90.4  83.61281  81.67732</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 81  2006-09-01  81.2  81.49461  81.63927</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 82  2006-10-01  81.5  81.72147  81.56139</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 83  2006-11-01  75.4  80.07611  81.52549</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 84  2006-12-01  77.1  82.49068  81.66278</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 85  2007-01-01  75.0  82.29508  82.09475</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 86  2007-02-01  69.9  81.61964  82.75884</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 87  2007-03-01  81.4  84.10001  83.45809</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 88  2007-04-01  82.0  83.68957  84.05306</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 89  2007-05-01  91.6  85.56409  84.42171</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 90  2007-06-01  95.4  84.97971  84.62612</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 91  2007-07-01  95.6  84.16022  84.79141</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 92  2007-08-01  91.5  84.54704  85.03818</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 93  2007-09-01  84.3  85.57490  85.52071</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 94  2007-10-01  85.3  85.39854  86.28509</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 95  2007-11-01  83.9  88.73994  87.21959</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 96  2007-12-01  82.0  87.50655  88.20966</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 97  2008-01-01  81.2  89.66984  89.15619</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 98  2008-02-01  80.9  89.87284  90.13517</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 99  2008-03-01  88.1  90.89019  91.20229</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 100 2008-04-01  89.9  91.94428  92.34522</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 101 2008-05-01  99.8  93.23488  93.41300</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 102 2008-06-01 106.6  94.77242  94.21774</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 103 2008-07-01 106.9  95.49301  94.55146</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 104 2008-08-01 101.1  94.05739  94.32056</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 105 2008-09-01  93.9  94.07994  93.62158</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 106 2008-10-01  91.3  92.00395  92.65945</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 107 2008-11-01  79.8  85.14335  82.14095</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 108 2008-12-01  76.9  81.05621  81.46351</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 109 2009-01-01  72.7  79.90781  81.06476</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 110 2009-02-01  72.1  82.41482  80.93470</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 111 2009-03-01  78.1  79.93080  81.04200</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 112 2009-04-01  81.1  83.80124  81.37796</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 113 2009-05-01  87.2  81.44560  81.89503</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 114 2009-06-01  93.4  82.74537  82.51690</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 115 2009-07-01  92.1  82.85902  83.15040</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 116 2009-08-01  90.3  84.12922  83.78489</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 117 2009-09-01  83.8  84.69762  84.34413</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 118 2009-10-01  83.9  84.54197  84.75468</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 119 2009-11-01  80.0  84.42242  85.02340</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 120 2009-12-01  84.1  89.24783  85.14165</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 121 2010-01-01  81.0  88.42702  85.13921</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 122 2010-02-01  74.5  84.25932  84.99049</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 123 2010-03-01  83.5  84.97490  84.70755</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 124 2010-04-01  81.4  84.18893  84.29221</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 125 2010-05-01  90.5  84.68304  83.84090</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 126 2010-06-01  92.9  83.07806  83.54744</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 127 2010-07-01  91.1  83.12565  83.57599</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 128 2010-08-01  90.4  83.76493  83.96714</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 129 2010-09-01  82.7  84.05637  84.71207</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 130 2010-10-01  85.9  86.10603  85.72062</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 131 2010-11-01  83.5  87.53763  86.80574</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 132 2010-12-01  86.2  90.78758  87.80117</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 133 2011-01-01  81.3  88.18343  88.58149</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 134 2011-02-01  79.5  89.33667  89.10860</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 135 2011-03-01  87.2  89.53731  89.41270</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 136 2011-04-01  88.9  92.54389  89.52296</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 137 2011-05-01  95.9  89.54732  89.53640</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 138 2011-06-01  99.1  89.37676  89.53508</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 139 2011-07-01  97.0  89.15230  89.58330</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 140 2011-08-01  97.7  90.19964  89.76867</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 141 2011-09-01  88.7  89.49714  90.17749</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 142 2011-10-01  92.0  91.60543  90.84846</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 143 2011-11-01  86.6  91.27006  91.69899</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 144 2011-12-01  87.2  91.79748  92.61580</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 145 2012-01-01  87.5  94.05088  93.48927</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 146 2012-02-01  87.8  95.21441  94.26058</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 147 2012-03-01  92.3  94.99038  94.91004</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 148 2012-04-01  90.4  94.26499  95.38865</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 149 2012-05-01 102.0  96.19883  95.80459</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 150 2012-06-01  96.3  86.55821  96.18413</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 151 2012-07-01  98.3  90.08738  96.54435</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 152 2012-08-01  98.8  91.82487  96.85731</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 153 2012-09-01  91.9  93.15020  97.07513</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 154 2012-10-01  98.5  96.80370  97.26919</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 155 2012-11-01  89.7  94.41500  97.49021</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 156 2012-12-01  91.6  96.03476  97.68479</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 157 2013-01-01  90.2  97.41261  97.69770</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 158 2013-02-01  86.5  97.51972  97.46277</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 159 2013-03-01  97.0 100.09827  97.01522</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 160 2013-04-01  91.8  95.33914  96.59605</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 161 2013-05-01 101.0  95.29328  96.33626</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 162 2013-06-01 105.6  95.50668  96.25571</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 163 2013-07-01 105.6  96.47683  96.44802</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 164 2013-08-01 104.3  97.38567  96.71922</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 165 2013-09-01  98.2  98.16766  96.83896</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 166 2013-10-01  95.7  94.81584  96.61091</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 167 2013-11-01  91.6  96.32628  96.04112</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 168 2013-12-01  93.0  96.88631  95.30577</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 169 2014-01-01  86.7  93.37261  94.66744</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 170 2014-02-01  83.4  94.41991  94.31469</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 171 2014-03-01  90.2  93.10683  94.24948</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 172 2014-04-01  90.9  94.88103  94.42246</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 173 2014-05-01  99.7  94.64301  94.74644</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 174 2014-06-01 107.8  96.43528  95.12718</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 175 2014-07-01 102.8  94.69480  95.38817</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 176 2014-08-01  98.1  91.60186  95.50595</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 177 2014-09-01  97.0  96.28524  95.48806</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 178 2014-10-01  96.1  95.02877  95.27593</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 179 2014-11-01  89.9  95.04921  94.94798</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 180 2014-12-01  91.5  95.17907  94.54514</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 181 2015-01-01  82.9  89.61196  94.19109</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 182 2015-02-01  80.7  91.56741  93.93326</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 183 2015-03-01  95.3  97.81935  93.80658</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 184 2015-04-01  90.4  94.78518  93.75293</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 185 2015-05-01  94.1  89.29085  93.64005</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 186 2015-06-01 105.6  94.00618  93.41394</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 187 2015-07-01 100.6  92.20854  93.02669</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 188 2015-08-01 102.9  96.10295  92.49805</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 189 2015-09-01  92.3  92.40846  91.90478</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 190 2015-10-01  91.6  90.89906  91.27655</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 191 2015-11-01  87.4  91.10750  90.56806</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 192 2015-12-01  85.2  89.85829  89.80538</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 193 2016-01-01  82.7  89.21817  89.15085</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 194 2016-02-01  81.1  88.37611  88.76923</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 195 2016-03-01  83.6  86.22131  88.81984</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 196 2016-04-01  85.5  89.22499  89.22546</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 197 2016-05-01  95.5  89.71699  89.86916</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 198 2016-06-01 101.1  91.39642  90.56677</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 199 2016-07-01  99.5  91.45134  91.12844</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 200 2016-08-01  99.2  91.79844  91.52720</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 201 2016-09-01  90.4  90.93573  91.86549</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 202 2016-10-01  94.0  93.14279  92.35116</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 203 2016-11-01  88.1  91.44479  93.12882</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 204 2016-12-01  88.4  93.91805  94.22953</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 205 2017-01-01  93.7  99.92364  95.42093</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 206 2017-02-01  85.3  96.65786  96.39242</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 207 2017-03-01  95.3  97.83315  96.95080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 208 2017-04-01  92.3  97.41917  97.00610</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 209 2017-05-01 104.1  97.20995  96.63065</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 210 2017-06-01 104.2  94.19695  96.09009</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 211 2017-07-01 105.4  96.32613  95.70579</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 212 2017-08-01 102.3  95.72385  95.65389</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 213 2017-09-01  94.2  95.14063  96.06223</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 214 2017-10-01  98.5  96.83512  96.91052</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 215 2017-11-01  95.0  98.94355  98.02835</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 216 2017-12-01  91.6  97.92377  99.18098</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 217 2018-01-01  94.9 100.53595 100.15612</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 218 2018-02-01  90.7 102.41374 100.83819</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 219 2018-03-01  98.3 101.08002 101.14940</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 220 2018-04-01  96.2 100.91826 101.19200</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 221 2018-05-01 107.0 100.73871 101.20464</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 222 2018-06-01 111.4 101.25043 101.35858</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 223 2018-07-01 112.4 101.53586 101.77407</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 224 2018-08-01 109.3 102.13862 102.44229</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 225 2018-09-01 100.8 102.76529 103.08684</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 226 2018-10-01 106.7 104.60032 103.37327</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 227 2018-11-01 100.0 103.25680 103.15686</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 228 2018-12-01  96.4 103.40542 102.50846</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 229 2019-01-01  94.8 101.53836 101.71044</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 230 2019-02-01  89.0  99.97813 101.00465</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 231 2019-03-01  96.7  99.20056 100.58042</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 232 2019-04-01 101.4 106.30654 100.56121</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 233 2019-05-01 108.3 101.77601 100.86153</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 234 2019-06-01 110.6 101.60124 101.22658</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 235 2019-07-01 110.2  98.67017 101.45337</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 236 2019-08-01 108.6 102.25600 101.55322</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 237 2019-09-01 102.0 102.75759 101.57480</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 238 2019-10-01 101.8 100.57616 101.65952</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 239 2019-11-01  98.0 100.85893 101.79515</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 240 2019-12-01  95.5 102.14447 101.88796</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 241 2020-01-01  96.5 103.63722 101.80786</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 242 2020-02-01  92.1  99.96395 101.58536</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 243 2020-03-01  83.0  84.32370  83.02957</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 244 2020-04-01  75.4  80.22503  82.78187</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 245 2020-05-01  87.2  82.55709  82.52642</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 246 2020-06-01 103.1  93.18879  94.17538</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 247 2020-07-01 106.9  96.21535  93.77585</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 248 2020-08-01 102.9  97.06530  93.11078</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 249 2020-09-01  92.1  92.33833  92.26658</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 250 2020-10-01  91.8  90.68934  91.46817</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 251 2020-11-01  83.6  85.53236  90.87028</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 252 2020-12-01  83.2  89.59447  90.68204</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 253 2021-01-01  83.9  91.23069  90.96704</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 254 2021-02-01  83.1  92.77193  91.70077</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 255 2021-03-01  90.7  91.66755  92.68014</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 256 2021-04-01  88.1  93.39957  93.69061</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 257 2021-05-01  99.7  94.54808  94.46603</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 258 2021-06-01 107.6  97.91186  94.91595</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 259 2021-07-01 117.5 106.23620 105.47077</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 260 2021-08-01 112.0 105.09411 105.55538</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 261 2021-09-01 103.9 104.24914 105.65693</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 262 2021-10-01 106.7 105.07708 106.00072</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 263 2021-11-01 106.4 108.08328 106.70654</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 264 2021-12-01 100.5 107.87843 107.62648</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 265 2022-01-01  97.8 106.99224 108.48106</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 266 2022-02-01  99.0 110.29599 109.05027</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 267 2022-03-01 126.1 128.68956 127.98549</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 268 2022-04-01 120.0 127.05819 127.58587</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 269 2022-05-01 134.4 126.95373 126.80894</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 270 2022-06-01 155.4 142.38441 125.92889</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 271 2022-07-01 150.7 136.69484 125.07081</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 272 2022-08-01 137.9 128.83752 124.29325</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 273 2022-09-01 128.8 128.13148 123.48950</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 274 2022-10-01 132.0 129.51873 122.49389</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 275 2022-11-01 126.0 128.70012 121.31065</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 276 2022-12-01 111.4 119.77050 119.91007</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 277 2023-01-01 108.9 118.95338 118.32229</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 278 2023-02-01 105.9 117.88301 116.72833</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 279 2023-03-01 117.7 119.86465 115.36792</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 280 2023-04-01 107.8 114.77640 114.58488</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 281 2023-05-01 118.5 111.68221 114.46808</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 282 2023-06-01 125.8 114.99637 114.93840</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 283 2023-07-01 121.9 110.91825 115.97140</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 284 2023-08-01 124.2 117.05220 117.23865</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 285 2023-09-01 121.2 120.31399 118.19710</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 286 2023-10-01 127.1 123.44881 118.30915</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 287 2023-11-01 114.6 117.86677 117.42604</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 288 2023-12-01 109.3 117.14154 115.90829</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 289 2024-01-01 103.3 112.59114 114.21403</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 290 2024-02-01 103.6 111.88089 112.56632</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 291 2024-03-01 105.3 107.87144 111.11635</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 292 2024-04-01 106.9 111.66991 109.83392</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 293 2024-05-01 115.8 110.08397 108.51272</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 294 2024-06-01 114.7 105.97456 106.95992</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 295 2024-07-01 115.0 104.03113 105.13513</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 296 2024-08-01 111.3 104.91651 103.27678</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 297 2024-09-01 103.2 101.94373 101.79082</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 298 2024-10-01 102.0  99.46834 100.91046</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 299 2024-11-01  96.6  99.15210 100.66725</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 300 2024-12-01  96.2 101.92375 100.84175</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 301 2025-01-01  95.7 104.99684 101.26710</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 302 2025-02-01  91.2 101.92145 101.76403</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Include linearized series.</span></span></span>
 <span class="r-in"><span><span class="va">my_model</span> <span class="op">&lt;-</span> <span class="fu">RJDemetra</span><span class="fu">::</span><span class="fu"><a href="https://rjdverse.github.io/rjdemetra/reference/x13.html" class="external-link">x13</a></span><span class="op">(</span><span class="va">time_series</span>,spec<span class="op">=</span><span class="st">"RSA5c"</span>,</span></span>
 <span class="r-in"><span>             userdefined<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"decomposition.b1"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'time_series' not found</span>
 <span class="r-in"><span><span class="fu">make_ts_df</span><span class="op">(</span><span class="va">my_model</span>,cal_adjust<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'my_model' not found</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>cal_adjust could not be calculated. decomposition.a8 and/or decomposition.b1 are not userdefined as utput in x13()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           date Ujust        SA     Trend</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   2000-01-01  61.7  66.53686  65.80784</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   2000-02-01  58.7  65.38606  66.33435</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   2000-03-01  66.2  67.06597  67.00253</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   2000-04-01  66.5  68.22942  67.83538</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   2000-05-01  72.3  67.81759  68.79550</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6   2000-06-01  78.2  70.37356  69.83697</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7   2000-07-01  79.5  71.40106  71.01178</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8   2000-08-01  76.7  71.61961  72.27703</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9   2000-09-01  73.4  73.90273  73.58235</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10  2000-10-01  73.2  74.04852  74.88170</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11  2000-11-01  72.5  76.50145  76.04087</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12  2000-12-01  73.3  78.02546  76.96036</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13  2001-01-01  62.0  66.28366  67.14788</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14  2001-02-01  59.1  68.43735  67.40136</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15  2001-03-01  65.7  66.91021  67.37865</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16  2001-04-01  66.2  67.22645  67.17397</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17  2001-05-01  70.8  67.00057  66.83886</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18  2001-06-01  76.5  69.00205  66.41803</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19  2001-07-01  73.5  65.45846  65.93716</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20  2001-08-01  70.9  65.96097  65.54065</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21  2001-09-01  64.6  65.51849  65.40120</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22  2001-10-01  64.5  64.79819  65.59880</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23  2001-11-01  62.4  65.53258  66.11570</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24  2001-12-01  63.1  67.12024  66.83644</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25  2002-01-01  63.3  68.64660  67.66422</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26  2002-02-01  59.0  68.52156  68.51388</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27  2002-03-01  67.9  69.30467  69.33723</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28  2002-04-01  68.3  68.98510  70.07090</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29  2002-05-01  75.7  71.35400  70.73724</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30  2002-06-01  79.0  71.95913  71.41921</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31  2002-07-01  81.3  71.87083  72.10208</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32  2002-08-01  77.8  72.51533  72.67819</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33  2002-09-01  72.5  72.65902  73.10361</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34  2002-10-01  73.3  73.99789  73.43029</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35  2002-11-01  70.8  74.47508  73.75440</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36  2002-12-01  69.2  73.24960  74.14027</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37  2003-01-01  60.6  65.92079  66.64201</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38  2003-02-01  57.7  67.33642  66.82637</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39  2003-03-01  65.9  67.36044  66.88374</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40  2003-04-01  66.4  67.52973  66.83689</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41  2003-05-01  66.9  63.25074  66.76072</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42  2003-06-01  72.3  65.16255  66.69906</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43  2003-07-01  75.1  66.68248  66.67906</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44  2003-08-01  72.5  67.40875  66.74988</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45  2003-09-01  67.4  67.07451  66.85231</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46  2003-10-01  67.2  67.34239  66.91738</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47  2003-11-01  62.5  66.40758  66.94310</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48  2003-12-01  63.1  66.62308  67.04741</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49  2004-01-01  63.3  69.69829  67.37976</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 50  2004-02-01  59.0  67.06786  68.01583</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 51  2004-03-01  67.9  68.84960  68.84360</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 52  2004-04-01  68.3  69.54954  69.70906</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 53  2004-05-01  75.7  71.35827  70.50433</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 54  2004-06-01  79.0  71.09510  71.20120</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 55  2004-07-01  81.3  72.00292  71.83355</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 56  2004-08-01  77.8  71.55975  72.41900</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 57  2004-09-01  72.5  72.93781  72.92910</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 58  2004-10-01  73.3  73.66544  73.32790</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59  2004-11-01  70.8  74.15025  73.58398</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 60  2004-12-01  69.2  73.68818  73.66126</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 61  2005-01-01  64.1  70.85780  73.58726</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 62  2005-02-01  62.0  72.98993  73.52159</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 63  2005-03-01  71.6  73.49185  73.62593</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 64  2005-04-01  73.0  74.45149  74.00330</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 65  2005-05-01  78.9  73.68725  74.62797</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 66  2005-06-01  84.0  75.72449  75.39016</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 67  2005-07-01  86.8  76.62208  76.21270</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 68  2005-08-01  84.1  77.01818  76.99673</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 69  2005-09-01  80.1  80.23228  77.68746</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 70  2005-10-01  78.0  78.41173  78.27894</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 71  2005-11-01  72.1  76.03503  78.81156</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 72  2005-12-01  74.7  79.95194  79.32178</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 73  2006-01-01  71.5  78.81446  79.80437</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 74  2006-02-01  68.6  80.62073  80.20889</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 75  2006-03-01  78.6  80.70550  80.56368</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 76  2006-04-01  79.1  81.40797  80.89629</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 77  2006-05-01  86.8  80.53974  81.23504</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 78  2006-06-01  90.6  80.89557  81.49645</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 79  2006-07-01  93.3  82.30729  81.63701</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 80  2006-08-01  90.4  83.61281  81.67732</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 81  2006-09-01  81.2  81.49461  81.63927</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 82  2006-10-01  81.5  81.72147  81.56139</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 83  2006-11-01  75.4  80.07611  81.52549</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 84  2006-12-01  77.1  82.49068  81.66278</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 85  2007-01-01  75.0  82.29508  82.09475</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 86  2007-02-01  69.9  81.61964  82.75884</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 87  2007-03-01  81.4  84.10001  83.45809</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 88  2007-04-01  82.0  83.68957  84.05306</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 89  2007-05-01  91.6  85.56409  84.42171</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 90  2007-06-01  95.4  84.97971  84.62612</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 91  2007-07-01  95.6  84.16022  84.79141</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 92  2007-08-01  91.5  84.54704  85.03818</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 93  2007-09-01  84.3  85.57490  85.52071</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 94  2007-10-01  85.3  85.39854  86.28509</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 95  2007-11-01  83.9  88.73994  87.21959</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 96  2007-12-01  82.0  87.50655  88.20966</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 97  2008-01-01  81.2  89.66984  89.15619</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 98  2008-02-01  80.9  89.87284  90.13517</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 99  2008-03-01  88.1  90.89019  91.20229</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 100 2008-04-01  89.9  91.94428  92.34522</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 101 2008-05-01  99.8  93.23488  93.41300</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 102 2008-06-01 106.6  94.77242  94.21774</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 103 2008-07-01 106.9  95.49301  94.55146</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 104 2008-08-01 101.1  94.05739  94.32056</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 105 2008-09-01  93.9  94.07994  93.62158</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 106 2008-10-01  91.3  92.00395  92.65945</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 107 2008-11-01  79.8  85.14335  82.14095</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 108 2008-12-01  76.9  81.05621  81.46351</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 109 2009-01-01  72.7  79.90781  81.06476</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 110 2009-02-01  72.1  82.41482  80.93470</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 111 2009-03-01  78.1  79.93080  81.04200</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 112 2009-04-01  81.1  83.80124  81.37796</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 113 2009-05-01  87.2  81.44560  81.89503</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 114 2009-06-01  93.4  82.74537  82.51690</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 115 2009-07-01  92.1  82.85902  83.15040</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 116 2009-08-01  90.3  84.12922  83.78489</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 117 2009-09-01  83.8  84.69762  84.34413</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 118 2009-10-01  83.9  84.54197  84.75468</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 119 2009-11-01  80.0  84.42242  85.02340</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 120 2009-12-01  84.1  89.24783  85.14165</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 121 2010-01-01  81.0  88.42702  85.13921</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 122 2010-02-01  74.5  84.25932  84.99049</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 123 2010-03-01  83.5  84.97490  84.70755</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 124 2010-04-01  81.4  84.18893  84.29221</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 125 2010-05-01  90.5  84.68304  83.84090</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 126 2010-06-01  92.9  83.07806  83.54744</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 127 2010-07-01  91.1  83.12565  83.57599</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 128 2010-08-01  90.4  83.76493  83.96714</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 129 2010-09-01  82.7  84.05637  84.71207</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 130 2010-10-01  85.9  86.10603  85.72062</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 131 2010-11-01  83.5  87.53763  86.80574</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 132 2010-12-01  86.2  90.78758  87.80117</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 133 2011-01-01  81.3  88.18343  88.58149</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 134 2011-02-01  79.5  89.33667  89.10860</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 135 2011-03-01  87.2  89.53731  89.41270</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 136 2011-04-01  88.9  92.54389  89.52296</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 137 2011-05-01  95.9  89.54732  89.53640</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 138 2011-06-01  99.1  89.37676  89.53508</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 139 2011-07-01  97.0  89.15230  89.58330</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 140 2011-08-01  97.7  90.19964  89.76867</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 141 2011-09-01  88.7  89.49714  90.17749</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 142 2011-10-01  92.0  91.60543  90.84846</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 143 2011-11-01  86.6  91.27006  91.69899</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 144 2011-12-01  87.2  91.79748  92.61580</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 145 2012-01-01  87.5  94.05088  93.48927</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 146 2012-02-01  87.8  95.21441  94.26058</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 147 2012-03-01  92.3  94.99038  94.91004</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 148 2012-04-01  90.4  94.26499  95.38865</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 149 2012-05-01 102.0  96.19883  95.80459</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 150 2012-06-01  96.3  86.55821  96.18413</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 151 2012-07-01  98.3  90.08738  96.54435</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 152 2012-08-01  98.8  91.82487  96.85731</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 153 2012-09-01  91.9  93.15020  97.07513</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 154 2012-10-01  98.5  96.80370  97.26919</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 155 2012-11-01  89.7  94.41500  97.49021</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 156 2012-12-01  91.6  96.03476  97.68479</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 157 2013-01-01  90.2  97.41261  97.69770</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 158 2013-02-01  86.5  97.51972  97.46277</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 159 2013-03-01  97.0 100.09827  97.01522</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 160 2013-04-01  91.8  95.33914  96.59605</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 161 2013-05-01 101.0  95.29328  96.33626</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 162 2013-06-01 105.6  95.50668  96.25571</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 163 2013-07-01 105.6  96.47683  96.44802</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 164 2013-08-01 104.3  97.38567  96.71922</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 165 2013-09-01  98.2  98.16766  96.83896</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 166 2013-10-01  95.7  94.81584  96.61091</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 167 2013-11-01  91.6  96.32628  96.04112</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 168 2013-12-01  93.0  96.88631  95.30577</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 169 2014-01-01  86.7  93.37261  94.66744</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 170 2014-02-01  83.4  94.41991  94.31469</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 171 2014-03-01  90.2  93.10683  94.24948</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 172 2014-04-01  90.9  94.88103  94.42246</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 173 2014-05-01  99.7  94.64301  94.74644</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 174 2014-06-01 107.8  96.43528  95.12718</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 175 2014-07-01 102.8  94.69480  95.38817</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 176 2014-08-01  98.1  91.60186  95.50595</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 177 2014-09-01  97.0  96.28524  95.48806</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 178 2014-10-01  96.1  95.02877  95.27593</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 179 2014-11-01  89.9  95.04921  94.94798</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 180 2014-12-01  91.5  95.17907  94.54514</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 181 2015-01-01  82.9  89.61196  94.19109</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 182 2015-02-01  80.7  91.56741  93.93326</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 183 2015-03-01  95.3  97.81935  93.80658</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 184 2015-04-01  90.4  94.78518  93.75293</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 185 2015-05-01  94.1  89.29085  93.64005</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 186 2015-06-01 105.6  94.00618  93.41394</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 187 2015-07-01 100.6  92.20854  93.02669</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 188 2015-08-01 102.9  96.10295  92.49805</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 189 2015-09-01  92.3  92.40846  91.90478</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 190 2015-10-01  91.6  90.89906  91.27655</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 191 2015-11-01  87.4  91.10750  90.56806</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 192 2015-12-01  85.2  89.85829  89.80538</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 193 2016-01-01  82.7  89.21817  89.15085</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 194 2016-02-01  81.1  88.37611  88.76923</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 195 2016-03-01  83.6  86.22131  88.81984</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 196 2016-04-01  85.5  89.22499  89.22546</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 197 2016-05-01  95.5  89.71699  89.86916</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 198 2016-06-01 101.1  91.39642  90.56677</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 199 2016-07-01  99.5  91.45134  91.12844</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 200 2016-08-01  99.2  91.79844  91.52720</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 201 2016-09-01  90.4  90.93573  91.86549</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 202 2016-10-01  94.0  93.14279  92.35116</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 203 2016-11-01  88.1  91.44479  93.12882</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 204 2016-12-01  88.4  93.91805  94.22953</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 205 2017-01-01  93.7  99.92364  95.42093</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 206 2017-02-01  85.3  96.65786  96.39242</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 207 2017-03-01  95.3  97.83315  96.95080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 208 2017-04-01  92.3  97.41917  97.00610</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 209 2017-05-01 104.1  97.20995  96.63065</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 210 2017-06-01 104.2  94.19695  96.09009</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 211 2017-07-01 105.4  96.32613  95.70579</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 212 2017-08-01 102.3  95.72385  95.65389</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 213 2017-09-01  94.2  95.14063  96.06223</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 214 2017-10-01  98.5  96.83512  96.91052</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 215 2017-11-01  95.0  98.94355  98.02835</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 216 2017-12-01  91.6  97.92377  99.18098</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 217 2018-01-01  94.9 100.53595 100.15612</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 218 2018-02-01  90.7 102.41374 100.83819</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 219 2018-03-01  98.3 101.08002 101.14940</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 220 2018-04-01  96.2 100.91826 101.19200</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 221 2018-05-01 107.0 100.73871 101.20464</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 222 2018-06-01 111.4 101.25043 101.35858</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 223 2018-07-01 112.4 101.53586 101.77407</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 224 2018-08-01 109.3 102.13862 102.44229</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 225 2018-09-01 100.8 102.76529 103.08684</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 226 2018-10-01 106.7 104.60032 103.37327</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 227 2018-11-01 100.0 103.25680 103.15686</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 228 2018-12-01  96.4 103.40542 102.50846</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 229 2019-01-01  94.8 101.53836 101.71044</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 230 2019-02-01  89.0  99.97813 101.00465</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 231 2019-03-01  96.7  99.20056 100.58042</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 232 2019-04-01 101.4 106.30654 100.56121</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 233 2019-05-01 108.3 101.77601 100.86153</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 234 2019-06-01 110.6 101.60124 101.22658</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 235 2019-07-01 110.2  98.67017 101.45337</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 236 2019-08-01 108.6 102.25600 101.55322</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 237 2019-09-01 102.0 102.75759 101.57480</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 238 2019-10-01 101.8 100.57616 101.65952</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 239 2019-11-01  98.0 100.85893 101.79515</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 240 2019-12-01  95.5 102.14447 101.88796</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 241 2020-01-01  96.5 103.63722 101.80786</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 242 2020-02-01  92.1  99.96395 101.58536</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 243 2020-03-01  83.0  84.32370  83.02957</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 244 2020-04-01  75.4  80.22503  82.78187</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 245 2020-05-01  87.2  82.55709  82.52642</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 246 2020-06-01 103.1  93.18879  94.17538</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 247 2020-07-01 106.9  96.21535  93.77585</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 248 2020-08-01 102.9  97.06530  93.11078</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 249 2020-09-01  92.1  92.33833  92.26658</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 250 2020-10-01  91.8  90.68934  91.46817</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 251 2020-11-01  83.6  85.53236  90.87028</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 252 2020-12-01  83.2  89.59447  90.68204</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 253 2021-01-01  83.9  91.23069  90.96704</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 254 2021-02-01  83.1  92.77193  91.70077</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 255 2021-03-01  90.7  91.66755  92.68014</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 256 2021-04-01  88.1  93.39957  93.69061</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 257 2021-05-01  99.7  94.54808  94.46603</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 258 2021-06-01 107.6  97.91186  94.91595</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 259 2021-07-01 117.5 106.23620 105.47077</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 260 2021-08-01 112.0 105.09411 105.55538</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 261 2021-09-01 103.9 104.24914 105.65693</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 262 2021-10-01 106.7 105.07708 106.00072</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 263 2021-11-01 106.4 108.08328 106.70654</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 264 2021-12-01 100.5 107.87843 107.62648</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 265 2022-01-01  97.8 106.99224 108.48106</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 266 2022-02-01  99.0 110.29599 109.05027</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 267 2022-03-01 126.1 128.68956 127.98549</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 268 2022-04-01 120.0 127.05819 127.58587</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 269 2022-05-01 134.4 126.95373 126.80894</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 270 2022-06-01 155.4 142.38441 125.92889</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 271 2022-07-01 150.7 136.69484 125.07081</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 272 2022-08-01 137.9 128.83752 124.29325</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 273 2022-09-01 128.8 128.13148 123.48950</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 274 2022-10-01 132.0 129.51873 122.49389</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 275 2022-11-01 126.0 128.70012 121.31065</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 276 2022-12-01 111.4 119.77050 119.91007</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 277 2023-01-01 108.9 118.95338 118.32229</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 278 2023-02-01 105.9 117.88301 116.72833</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 279 2023-03-01 117.7 119.86465 115.36792</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 280 2023-04-01 107.8 114.77640 114.58488</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 281 2023-05-01 118.5 111.68221 114.46808</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 282 2023-06-01 125.8 114.99637 114.93840</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 283 2023-07-01 121.9 110.91825 115.97140</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 284 2023-08-01 124.2 117.05220 117.23865</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 285 2023-09-01 121.2 120.31399 118.19710</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 286 2023-10-01 127.1 123.44881 118.30915</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 287 2023-11-01 114.6 117.86677 117.42604</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 288 2023-12-01 109.3 117.14154 115.90829</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 289 2024-01-01 103.3 112.59114 114.21403</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 290 2024-02-01 103.6 111.88089 112.56632</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 291 2024-03-01 105.3 107.87144 111.11635</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 292 2024-04-01 106.9 111.66991 109.83392</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 293 2024-05-01 115.8 110.08397 108.51272</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 294 2024-06-01 114.7 105.97456 106.95992</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 295 2024-07-01 115.0 104.03113 105.13513</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 296 2024-08-01 111.3 104.91651 103.27678</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 297 2024-09-01 103.2 101.94373 101.79082</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 298 2024-10-01 102.0  99.46834 100.91046</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 299 2024-11-01  96.6  99.15210 100.66725</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 300 2024-12-01  96.2 101.92375 100.84175</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 301 2025-01-01  95.7 104.99684 101.26710</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 302 2025-02-01  91.2 101.92145 101.76403</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Include calendar adjusted series.</span></span></span>
 <span class="r-in"><span><span class="va">my_model</span> <span class="op">&lt;-</span> <span class="fu">RJDemetra</span><span class="fu">::</span><span class="fu"><a href="https://rjdverse.github.io/rjdemetra/reference/x13.html" class="external-link">x13</a></span><span class="op">(</span><span class="va">time_series</span>,spec<span class="op">=</span><span class="st">"RSA5c"</span>,</span></span>
 <span class="r-in"><span>             userdefined<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"decomposition.a8"</span>,<span class="st">"decomposition.b1"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'time_series' not found</span>
 <span class="r-in"><span><span class="fu">make_ts_df</span><span class="op">(</span><span class="va">my_model</span>,cal_adjust<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'my_model' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           date Ujust        SA     Trend cal_adjust</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   2000-01-01  61.7  66.53686  65.80784   61.87137</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   2000-02-01  58.7  65.38606  66.33435   57.06872</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   2000-03-01  66.2  67.06597  67.00253   66.14755</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   2000-04-01  66.5  68.22942  67.83538   67.07617</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   2000-05-01  72.3  67.81759  68.79550   71.73534</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6   2000-06-01  78.2  70.37356  69.83697   78.13854</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7   2000-07-01  79.5  71.40106  71.01178   79.72082</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8   2000-08-01  76.7  71.61961  72.27703   76.83605</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9   2000-09-01  73.4  73.90273  73.58235   73.40434</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10  2000-10-01  73.2  74.04852  74.88170   72.92146</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11  2000-11-01  72.5  76.50145  76.04087   72.77263</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12  2000-12-01  73.3  78.02546  76.96036   73.59975</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13  2001-01-01  62.0  66.28366  67.14788   61.51578</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14  2001-02-01  59.1  68.43735  67.40136   59.62768</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15  2001-03-01  65.7  66.91021  67.37865   65.95137</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16  2001-04-01  66.2  67.22645  67.17397   66.07887</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17  2001-05-01  70.8  67.00057  66.83886   70.92558</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18  2001-06-01  76.5  69.00205  66.41803   76.50452</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19  2001-07-01  73.5  65.45846  65.93716   73.22032</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20  2001-08-01  70.9  65.96097  65.54065   70.84383</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21  2001-09-01  64.6  65.51849  65.40120   65.15971</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22  2001-10-01  64.5  64.79819  65.59880   63.99626</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23  2001-11-01  62.4  65.53258  66.11570   62.35095</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24  2001-12-01  63.1  67.12024  66.83644   63.27526</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25  2002-01-01  63.3  68.64660  67.66422   63.41228</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26  2002-02-01  59.0  68.52156  68.51388   59.52679</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27  2002-03-01  67.9  69.30467  69.33723   68.17766</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28  2002-04-01  68.3  68.98510  70.07090   67.76701</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29  2002-05-01  75.7  71.35400  70.73724   75.64003</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30  2002-06-01  79.0  71.95913  71.41921   79.68447</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31  2002-07-01  81.3  71.87083  72.10208   80.66505</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32  2002-08-01  77.8  72.51533  72.67819   78.09767</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33  2002-09-01  72.5  72.65902  73.10361   72.36735</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34  2002-10-01  73.3  73.99789  73.43029   73.43002</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35  2002-11-01  70.8  74.47508  73.75440   70.80419</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36  2002-12-01  69.2  73.24960  74.14027   68.93668</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37  2003-01-01  60.6  65.92079  66.64201   60.55199</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38  2003-02-01  57.7  67.33642  66.82637   58.21518</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39  2003-03-01  65.9  67.36044  66.88374   66.08304</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40  2003-04-01  66.4  67.52973  66.83689   66.26817</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41  2003-05-01  66.9  63.25074  66.76072   67.15596</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42  2003-06-01  72.3  65.16255  66.69906   72.16771</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43  2003-07-01  75.1  66.68248  66.67906   75.23321</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44  2003-08-01  72.5  67.40875  66.74988   72.79648</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45  2003-09-01  67.4  67.07451  66.85231   66.87403</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46  2003-10-01  67.2  67.34239  66.91738   67.14676</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47  2003-11-01  62.5  66.40758  66.94310   63.04151</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48  2003-12-01  63.1  66.62308  67.04741   62.60719</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49  2004-01-01  63.3  69.69829  67.37976   63.54219</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 50  2004-02-01  59.0  67.06786  68.01583   57.70576</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 51  2004-03-01  67.9  68.84960  68.84360   67.36970</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 52  2004-04-01  68.3  69.54954  69.70906   68.24632</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 53  2004-05-01  75.7  71.35827  70.50433   75.91026</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 54  2004-06-01  79.0  71.09510  71.20120   78.84315</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 55  2004-07-01  81.3  72.00292  71.83355   81.61106</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 56  2004-08-01  77.8  71.55975  72.41900   77.50395</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 57  2004-09-01  72.5  72.93781  72.92910   72.77263</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 58  2004-10-01  73.3  73.66544  73.32790   73.59975</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59  2004-11-01  70.8  74.15025  73.58398   70.24750</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 60  2004-12-01  69.2  73.68818  73.66126   69.14518</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 61  2005-01-01  64.1  70.85780  73.58726   64.27804</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 62  2005-02-01  62.0  72.98993  73.52159   62.55357</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 63  2005-03-01  71.6  73.49185  73.62593   71.72700</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 64  2005-04-01  73.0  74.45149  74.00330   73.00432</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 65  2005-05-01  78.9  73.68725  74.62797   78.59977</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 66  2005-06-01  84.0  75.72449  75.39016   84.31587</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 67  2005-07-01  86.8  76.62208  76.21270   87.15495</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 68  2005-08-01  84.1  77.01818  76.99673   83.44318</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 69  2005-09-01  80.1  80.23228  77.68746   80.03704</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 70  2005-10-01  78.0  78.41173  78.27894   78.21665</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 71  2005-11-01  72.1  76.03503  78.81156   71.95685</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 72  2005-12-01  74.7  79.95194  79.32178   74.98581</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 73  2006-01-01  71.5  78.81446  79.80437   71.22793</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 74  2006-02-01  68.6  80.62073  80.20889   69.21250</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 75  2006-03-01  78.6  80.70550  80.56368   78.53773</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 76  2006-04-01  79.1  81.40797  80.89629   79.78534</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 77  2006-05-01  86.8  80.53974  81.23504   86.12210</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 78  2006-06-01  90.6  80.89557  81.49645   90.52879</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 79  2006-07-01  93.3  82.30729  81.63701   93.55915</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 80  2006-08-01  90.4  83.61281  81.67732   90.56035</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 81  2006-09-01  81.2  81.49461  81.63927   81.20480</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 82  2006-10-01  81.5  81.72147  81.56139   81.18987</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 83  2006-11-01  75.4  80.07611  81.52549   75.68353</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 84  2006-12-01  77.1  82.49068  81.66278   77.41529</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 85  2007-01-01  75.0  82.29508  82.09475   74.41425</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 86  2007-02-01  69.9  81.61964  82.75884   70.52411</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 87  2007-03-01  81.4  84.10001  83.45809   81.71144</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 88  2007-04-01  82.0  83.68957  84.05306   81.84997</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 89  2007-05-01  91.6  85.56409  84.42171   91.76248</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 90  2007-06-01  95.4  84.97971  84.62612   95.40564</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 91  2007-07-01  95.6  84.16022  84.79141   95.23622</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 92  2007-08-01  91.5  84.54704  85.03818   91.42751</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 93  2007-09-01  84.3  85.57490  85.52071   85.03039</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 94  2007-10-01  85.3  85.39854  86.28509   84.63381</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 95  2007-11-01  83.9  88.73994  87.21959   83.83405</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 96  2007-12-01  82.0  87.50655  88.20966   82.22776</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 97  2008-01-01  81.2  89.66984  89.15619   81.34403</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 98  2008-02-01  80.9  89.87284  90.13517   78.45032</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 99  2008-03-01  88.1  90.89019  91.20229   88.34470</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 100 2008-04-01  89.9  91.94428  92.34522   89.72151</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 101 2008-05-01  99.8  93.23488  93.41300  100.18184</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 102 2008-06-01 106.6  94.77242  94.21774  106.40496</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 103 2008-07-01 106.9  95.49301  94.55146  107.08962</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 104 2008-08-01 101.1  94.05739  94.32056  101.51343</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 105 2008-09-01  93.9  94.07994  93.62158   93.16723</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 106 2008-10-01  91.3  92.00395  92.65945   91.22767</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 107 2008-11-01  79.8  85.14335  82.14095   80.49141</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 108 2008-12-01  76.9  81.05621  81.46351   76.29942</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 109 2009-01-01  72.7  79.90781  81.06476   72.97815</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 110 2009-02-01  72.1  82.41482  80.93470   72.74375</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 111 2009-03-01  78.1  79.93080  81.04200   77.80281</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 112 2009-04-01  81.1  83.80124  81.37796   81.40497</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 113 2009-05-01  87.2  81.44560  81.89503   87.55659</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 114 2009-06-01  93.4  82.74537  82.51690   92.67113</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 115 2009-07-01  92.1  82.85902  83.15040   92.02703</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 116 2009-08-01  90.3  84.12922  83.78489   90.55081</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 117 2009-09-01  83.8  84.69762  84.34413   83.63362</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 118 2009-10-01  83.9  84.54197  84.75468   84.22101</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 119 2009-11-01  80.0  84.42242  85.02340   79.85363</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 120 2009-12-01  84.1  89.24783  85.14165   84.24918</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 121 2010-01-01  81.0  88.42702  85.13921   81.33124</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 122 2010-02-01  74.5  84.25932  84.99049   75.16518</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 123 2010-03-01  83.5  84.97490  84.70755   82.84787</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 124 2010-04-01  81.4  84.18893  84.29221   81.33602</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 125 2010-05-01  90.5  84.68304  83.84090   90.75137</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 126 2010-06-01  92.9  83.07806  83.54744   92.71555</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 127 2010-07-01  91.1  83.12565  83.57599   91.44855</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 128 2010-08-01  90.4  83.76493  83.96714   90.05601</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 129 2010-09-01  82.7  84.05637  84.71207   83.01099</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 130 2010-10-01  85.9  86.10603  85.72062   86.25127</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 131 2010-11-01  83.5  87.53763  86.80574   82.84839</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 132 2010-12-01  86.2  90.78758  87.80117   86.13171</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 133 2011-01-01  81.3  88.18343  88.58149   81.52581</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 134 2011-02-01  79.5  89.33667  89.10860   80.20982</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 135 2011-03-01  87.2  89.53731  89.41270   87.35468</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 136 2011-04-01  88.9  92.54389  89.52296   88.90526</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 137 2011-05-01  95.9  89.54732  89.53640   95.53508</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 138 2011-06-01  99.1  89.37676  89.53508   99.47266</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 139 2011-07-01  97.0  89.15230  89.58330   97.39666</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 140 2011-08-01  97.7  90.19964  89.76867   96.93697</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 141 2011-09-01  88.7  89.49714  90.17749   88.63028</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 142 2011-10-01  92.0  91.60543  90.84846   92.25553</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 143 2011-11-01  86.6  91.27006  91.69899   86.42806</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 144 2011-12-01  87.2  91.79748  92.61580   87.53363</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 145 2012-01-01  87.5  94.05088  93.48927   87.16704</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 146 2012-02-01  87.8  95.21441  94.26058   85.52877</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 147 2012-03-01  92.3  94.99038  94.91004   92.65314</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 148 2012-04-01  90.4  94.26499  95.38865   90.23460</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 149 2012-05-01 102.0  96.19883  95.80459  102.18093</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 150 2012-06-01  96.3  86.55821  96.18413   96.30570</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 151 2012-07-01  98.3  90.08738  96.54435   97.92595</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 152 2012-08-01  98.8  91.82487  96.85731   98.72173</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 153 2012-09-01  91.9  93.15020  97.07513   92.69624</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 154 2012-10-01  98.5  96.80370  97.26919   97.73072</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 155 2012-11-01  89.7  94.41500  97.49021   89.62950</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 156 2012-12-01  91.6  96.03476  97.68479   91.85442</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 157 2013-01-01  90.2  97.41261  97.69770   90.36000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 158 2013-02-01  86.5  97.51972  97.46277   87.27232</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 159 2013-03-01  97.0 100.09827  97.01522   97.39666</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 160 2013-04-01  91.8  95.33914  96.59605   91.08362</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 161 2013-05-01 101.0  95.29328  96.33626  100.91998</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 162 2013-06-01 105.6  95.50668  96.25571  106.51494</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 163 2013-07-01 105.6  96.47683  96.44802  104.77527</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 164 2013-08-01 104.3  97.38567  96.71922  104.69906</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 165 2013-09-01  98.2  98.16766  96.83896   98.02032</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 166 2013-10-01  95.7  94.81584  96.61091   95.86975</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 167 2013-11-01  91.6  96.32628  96.04112   91.60542</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 168 2013-12-01  93.0  96.88631  95.30577   92.64611</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 169 2014-01-01  86.7  93.37261  94.66744   86.63131</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 170 2014-02-01  83.4  94.41991  94.31469   84.14464</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 171 2014-03-01  90.2  93.10683  94.24948   90.45053</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 172 2014-04-01  90.9  94.88103  94.42246   90.71953</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 173 2014-05-01  99.7  94.64301  94.74644  100.08146</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 174 2014-06-01 107.8  96.43528  95.12718  107.60276</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 175 2014-07-01 102.8  94.69480  95.38817  102.98235</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 176 2014-08-01  98.1  91.60186  95.50595   98.50116</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 177 2014-09-01  97.0  96.28524  95.48806   96.24304</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 178 2014-10-01  96.1  95.02877  95.27593   96.02386</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 179 2014-11-01  89.9  95.04921  94.94798   90.67891</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 180 2014-12-01  91.5  95.17907  94.54514   90.78539</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 181 2015-01-01  82.9  89.61196  94.19109   83.21718</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 182 2015-02-01  80.7  91.56741  93.93326   81.42054</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 183 2015-03-01  95.3  97.81935  93.80658   94.93736</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 184 2015-04-01  90.4  94.78518  93.75293   90.73994</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 185 2015-05-01  94.1  89.29085  93.64005   94.48481</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 186 2015-06-01 105.6  94.00618  93.41394  104.77593</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 187 2015-07-01 100.6  92.20854  93.02669  100.52030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 188 2015-08-01 102.9  96.10295  92.49805  103.18581</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 189 2015-09-01  92.3  92.40846  91.90478   92.11675</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 190 2015-10-01  91.6  90.89906  91.27655   91.95047</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 191 2015-11-01  87.4  91.10750  90.56806   87.24009</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 192 2015-12-01  85.2  89.85829  89.80538   85.35113</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 193 2016-01-01  82.7  89.21817  89.15085   83.03819</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 194 2016-02-01  81.1  88.37611  88.76923   78.54152</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 195 2016-03-01  83.6  86.22131  88.81984   83.74829</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 196 2016-04-01  85.5  89.22499  89.22546   85.50506</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 197 2016-05-01  95.5  89.71699  89.86916   95.13660</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 198 2016-06-01 101.1  91.39642  90.56677  101.48018</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 199 2016-07-01  99.5  91.45134  91.12844   99.90689</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 200 2016-08-01  99.2  91.79844  91.52720   98.42525</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 201 2016-09-01  90.4  90.93573  91.86549   90.32895</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 202 2016-10-01  94.0  93.14279  92.35116   94.26109</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 203 2016-11-01  88.1  91.44479  93.12882   87.92508</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 204 2016-12-01  88.4  93.91805  94.22953   88.73822</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 205 2017-01-01  93.7  99.92364  95.42093   93.34345</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 206 2017-02-01  85.3  96.65786  96.39242   86.06161</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 207 2017-03-01  95.3  97.83315  96.95080   95.22450</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 208 2017-04-01  92.3  97.41917  97.00610   93.09971</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 209 2017-05-01 104.1  97.20995  96.63065  103.28698</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 210 2017-06-01 104.2  94.19695  96.09009  104.11810</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 211 2017-07-01 105.4  96.32613  95.70579  105.69275</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 212 2017-08-01 102.3  95.72385  95.65389  102.48146</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 213 2017-09-01  94.2  95.14063  96.06223   94.20557</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 214 2017-10-01  98.5  96.83512  96.91052   98.12518</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 215 2017-11-01  95.0  98.94355  98.02835   95.35724</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 216 2017-12-01  91.6  97.92377  99.18098   91.97458</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 217 2018-01-01  94.9 100.53595 100.15612   94.15884</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 218 2018-02-01  90.7 102.41374 100.83819   91.50982</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 219 2018-03-01  98.3 101.08002 101.14940   98.67610</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 220 2018-04-01  96.2 100.91826 101.19200   96.02398</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 221 2018-05-01 107.0 100.73871 101.20464  107.18980</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 222 2018-06-01 111.4 101.25043 101.35858  111.40659</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 223 2018-07-01 112.4 101.53586 101.77407  111.97229</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 224 2018-08-01 109.3 102.13862 102.44229  109.21341</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 225 2018-09-01 100.8 102.76529 103.08684  101.67335</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 226 2018-10-01 106.7 104.60032 103.37327  105.86668</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 227 2018-11-01 100.0 103.25680 103.15686   99.92140</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 228 2018-12-01  96.4 103.40542 102.50846   96.66776</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 229 2019-01-01  94.8 101.53836 101.71044   94.96816</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 230 2019-02-01  89.0  99.97813 101.00465   89.79464</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 231 2019-03-01  96.7  99.20056 100.58042   97.09544</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 232 2019-04-01 101.4 106.30654 100.56121  100.60870</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 233 2019-05-01 108.3 101.77601 100.86153  108.21420</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 234 2019-06-01 110.6 101.60124 101.22658  111.55826</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 235 2019-07-01 110.2  98.67017 101.45337  109.33934</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 236 2019-08-01 108.6 102.25600 101.55322  109.01551</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 237 2019-09-01 102.0 102.75759 101.57480  101.81337</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 238 2019-10-01 101.8 100.57616 101.65952  101.98057</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 239 2019-11-01  98.0 100.85893 101.79515   98.00580</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 240 2019-12-01  95.5 102.14447 101.88796   95.13660</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 241 2020-01-01  96.5 103.63722 101.80786   96.42355</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 242 2020-02-01  92.1  99.96395 101.58536   90.13221</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 243 2020-03-01  83.0  84.32370  83.02957   82.68417</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 244 2020-04-01  75.4  80.22503  82.78187   75.68353</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 245 2020-05-01  87.2  82.55709  82.52642   87.55659</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 246 2020-06-01 103.1  93.18879  94.17538  102.29544</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 247 2020-07-01 106.9  96.21535  93.77585  106.81531</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 248 2020-08-01 102.9  97.06530  93.11078  103.18581</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 249 2020-09-01  92.1  92.33833  92.26658   91.91714</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 250 2020-10-01  91.8  90.68934  91.46817   92.15123</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 251 2020-11-01  83.6  85.53236  90.87028   83.44704</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 252 2020-12-01  83.2  89.59447  90.68204   83.34758</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 253 2021-01-01  83.9  91.23069  90.96704   84.24309</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 254 2021-02-01  83.1  92.77193  91.70077   83.84196</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 255 2021-03-01  90.7  91.66755  92.68014   89.99164</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 256 2021-04-01  88.1  93.39957  93.69061   88.03075</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 257 2021-05-01  99.7  94.54808  94.46603   99.97692</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 258 2021-06-01 107.6  97.91186  94.91595  107.38637</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 259 2021-07-01 117.5 106.23620 105.47077  117.94956</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 260 2021-08-01 112.0 105.09411 105.55538  111.57381</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 261 2021-09-01 103.9 104.24914 105.65693  104.29071</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 262 2021-10-01 106.7 105.07708 106.00072  107.13633</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 263 2021-11-01 106.4 108.08328 106.70654  105.56968</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 264 2021-12-01 100.5 107.87843 107.62648  100.42038</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 265 2022-01-01  97.8 106.99224 108.48106   98.07164</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 266 2022-02-01  99.0 110.29599 109.05027   99.88393</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 267 2022-03-01 126.1 128.68956 127.98549  126.32368</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 268 2022-04-01 120.0 127.05819 127.58587  120.00710</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 269 2022-05-01 134.4 126.95373 126.80894  133.88858</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 270 2022-06-01 155.4 142.38441 125.92889  155.98437</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 271 2022-07-01 150.7 136.69484 125.07081  151.31626</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 272 2022-08-01 137.9 128.83752 124.29325  136.82301</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 273 2022-09-01 128.8 128.13148 123.48950  128.69876</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 274 2022-10-01 132.0 129.51873 122.49389  132.36664</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 275 2022-11-01 126.0 128.70012 121.31065  125.74984</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 276 2022-12-01 111.4 119.77050 119.91007  111.82622</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 277 2023-01-01 108.9 118.95338 118.32229  108.48561</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 278 2023-02-01 105.9 117.88301 116.72833  106.84554</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 279 2023-03-01 117.7 119.86465 115.36792  117.60675</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 280 2023-04-01 107.8 114.77640 114.58488  108.73400</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 281 2023-05-01 118.5 111.68221 114.46808  117.57452</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 282 2023-06-01 125.8 114.99637 114.93840  125.70112</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 283 2023-07-01 121.9 110.91825 115.97140  122.23858</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 284 2023-08-01 124.2 117.05220 117.23865  124.42031</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 285 2023-09-01 121.2 120.31399 118.19710  121.20717</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 286 2023-10-01 127.1 123.44881 118.30915  126.61635</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 287 2023-11-01 114.6 117.86677 117.42604  115.03094</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 288 2023-12-01 109.3 117.14154 115.90829  109.74696</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 289 2024-01-01 103.3 112.59114 114.21403  102.49323</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 290 2024-02-01 103.6 111.88089 112.56632  101.30083</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 291 2024-03-01 105.3 107.87144 111.11635  105.73061</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 292 2024-04-01 106.9 111.66991 109.83392  106.06578</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 293 2024-05-01 115.8 110.08397 108.51272  115.70826</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 294 2024-06-01 114.7 105.97456 106.95992  115.69379</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 295 2024-07-01 115.0 104.03113 105.13513  114.10186</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 296 2024-08-01 111.3 104.91651 103.27678  111.72584</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 297 2024-09-01 103.2 101.94373 101.79082  103.01118</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 298 2024-10-01 102.0  99.46834 100.91046  102.18093</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 299 2024-11-01  96.6  99.15210 100.66725   96.60571</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 300 2024-12-01  96.2 101.92375 100.84175   95.83394</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 301 2025-01-01  95.7 104.99684 101.26710   95.62418</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 302 2025-02-01  91.2 101.92145 101.76403   92.01429</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Include assymetric 1x3 MA-filter</span></span></span>
 <span class="r-in"><span><span class="fu">make_ts_df</span><span class="op">(</span><span class="va">my_model</span>,ma_filter<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'my_model' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           date Ujust        SA     Trend MA_filter</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   2000-01-01  61.7  66.53686  65.80784        NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   2000-02-01  58.7  65.38606  66.33435  66.32963</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   2000-03-01  66.2  67.06597  67.00253  66.89382</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   2000-04-01  66.5  68.22942  67.83538  67.70432</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   2000-05-01  72.3  67.81759  68.79550  68.80685</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6   2000-06-01  78.2  70.37356  69.83697  69.86407</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7   2000-07-01  79.5  71.40106  71.01178  71.13141</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8   2000-08-01  76.7  71.61961  72.27703  72.30780</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9   2000-09-01  73.4  73.90273  73.58235  73.19029</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10  2000-10-01  73.2  74.04852  74.88170  74.81757</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11  2000-11-01  72.5  76.50145  76.04087  76.19181</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12  2000-12-01  73.3  78.02546  76.96036  73.60352</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13  2001-01-01  62.0  66.28366  67.14788  70.91549</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14  2001-02-01  59.1  68.43735  67.40136  67.21040</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15  2001-03-01  65.7  66.91021  67.37865  67.52467</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16  2001-04-01  66.2  67.22645  67.17397  67.04575</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17  2001-05-01  70.8  67.00057  66.83886  67.74302</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18  2001-06-01  76.5  69.00205  66.41803  67.15369</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19  2001-07-01  73.5  65.45846  65.93716  66.80716</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20  2001-08-01  70.9  65.96097  65.54065  65.64597</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21  2001-09-01  64.6  65.51849  65.40120  65.42588</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22  2001-10-01  64.5  64.79819  65.59880  65.28309</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23  2001-11-01  62.4  65.53258  66.11570  65.81700</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24  2001-12-01  63.1  67.12024  66.83644  67.09981</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25  2002-01-01  63.3  68.64660  67.66422  68.09613</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26  2002-02-01  59.0  68.52156  68.51388  68.82428</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27  2002-03-01  67.9  69.30467  69.33723  68.93711</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28  2002-04-01  68.3  68.98510  70.07090  69.88126</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29  2002-05-01  75.7  71.35400  70.73724  70.76608</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30  2002-06-01  79.0  71.95913  71.41921  71.72799</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31  2002-07-01  81.3  71.87083  72.10208  72.11510</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32  2002-08-01  77.8  72.51533  72.67819  72.34839</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33  2002-09-01  72.5  72.65902  73.10361  73.05741</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34  2002-10-01  73.3  73.99789  73.43029  73.71066</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35  2002-11-01  70.8  74.47508  73.75440  73.90752</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36  2002-12-01  69.2  73.24960  74.14027  71.21516</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37  2003-01-01  60.6  65.92079  66.64201  68.83560</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38  2003-02-01  57.7  67.33642  66.82637  66.87255</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39  2003-03-01  65.9  67.36044  66.88374  67.40886</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40  2003-04-01  66.4  67.52973  66.83689  66.04697</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41  2003-05-01  66.9  63.25074  66.76072  65.31434</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42  2003-06-01  72.3  65.16255  66.69906  65.03193</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43  2003-07-01  75.1  66.68248  66.67906  66.41793</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44  2003-08-01  72.5  67.40875  66.74988  67.05525</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45  2003-09-01  67.4  67.07451  66.85231  67.27522</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46  2003-10-01  67.2  67.34239  66.91738  66.94149</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47  2003-11-01  62.5  66.40758  66.94310  66.79102</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48  2003-12-01  63.1  66.62308  67.04741  67.57632</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49  2004-01-01  63.3  69.69829  67.37976  67.79641</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 50  2004-02-01  59.0  67.06786  68.01583  68.53858</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 51  2004-03-01  67.9  68.84960  68.84360  68.48900</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 52  2004-04-01  68.3  69.54954  69.70906  69.91913</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 53  2004-05-01  75.7  71.35827  70.50433  70.66763</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 54  2004-06-01  79.0  71.09510  71.20120  71.48543</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 55  2004-07-01  81.3  72.00292  71.83355  71.55259</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 56  2004-08-01  77.8  71.55975  72.41900  72.16683</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 57  2004-09-01  72.5  72.93781  72.92910  72.72100</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 58  2004-10-01  73.3  73.66544  73.32790  73.58450</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59  2004-11-01  70.8  74.15025  73.58398  73.83463</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 60  2004-12-01  69.2  73.68818  73.66126  72.89874</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 61  2005-01-01  64.1  70.85780  73.58726  72.51197</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 62  2005-02-01  62.0  72.98993  73.52159  72.44653</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 63  2005-03-01  71.6  73.49185  73.62593  73.64442</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 64  2005-04-01  73.0  74.45149  74.00330  73.87686</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 65  2005-05-01  78.9  73.68725  74.62797  74.62107</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 66  2005-06-01  84.0  75.72449  75.39016  75.34461</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 67  2005-07-01  86.8  76.62208  76.21270  76.45492</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 68  2005-08-01  84.1  77.01818  76.99673  77.95751</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 69  2005-09-01  80.1  80.23228  77.68746  78.55406</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 70  2005-10-01  78.0  78.41173  78.27894  78.22635</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 71  2005-11-01  72.1  76.03503  78.81156  78.13290</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 72  2005-12-01  74.7  79.95194  79.32178  78.26715</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 73  2006-01-01  71.5  78.81446  79.80437  79.79571</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 74  2006-02-01  68.6  80.62073  80.20889  80.04690</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 75  2006-03-01  78.6  80.70550  80.56368  80.91140</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 76  2006-04-01  79.1  81.40797  80.89629  80.88440</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 77  2006-05-01  86.8  80.53974  81.23504  80.94776</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 78  2006-06-01  90.6  80.89557  81.49645  81.24754</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 79  2006-07-01  93.3  82.30729  81.63701  82.27189</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 80  2006-08-01  90.4  83.61281  81.67732  82.47157</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 81  2006-09-01  81.2  81.49461  81.63927  82.27630</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 82  2006-10-01  81.5  81.72147  81.56139  81.09740</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 83  2006-11-01  75.4  80.07611  81.52549  81.42942</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 84  2006-12-01  77.1  82.49068  81.66278  81.62062</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 85  2007-01-01  75.0  82.29508  82.09475  82.13513</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 86  2007-02-01  69.9  81.61964  82.75884  82.67157</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 87  2007-03-01  81.4  84.10001  83.45809  83.13641</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 88  2007-04-01  82.0  83.68957  84.05306  84.45122</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 89  2007-05-01  91.6  85.56409  84.42171  84.74446</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 90  2007-06-01  95.4  84.97971  84.62612  84.90134</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 91  2007-07-01  95.6  84.16022  84.79141  84.56232</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 92  2007-08-01  91.5  84.54704  85.03818  84.76072</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 93  2007-09-01  84.3  85.57490  85.52071  85.17349</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 94  2007-10-01  85.3  85.39854  86.28509  86.57112</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 95  2007-11-01  83.9  88.73994  87.21959  87.21501</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 96  2007-12-01  82.0  87.50655  88.20966  88.63877</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 97  2008-01-01  81.2  89.66984  89.15619  89.01641</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 98  2008-02-01  80.9  89.87284  90.13517  90.14429</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 99  2008-03-01  88.1  90.89019  91.20229  90.90244</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 100 2008-04-01  89.9  91.94428  92.34522  92.02312</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 101 2008-05-01  99.8  93.23488  93.41300  93.31719</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 102 2008-06-01 106.6  94.77242  94.21774  94.50010</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 103 2008-07-01 106.9  95.49301  94.55146  94.77427</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 104 2008-08-01 101.1  94.05739  94.32056  94.54345</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 105 2008-09-01  93.9  94.07994  93.62158  93.38043</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 106 2008-10-01  91.3  92.00395  92.65945  90.40908</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 107 2008-11-01  79.8  85.14335  82.14095  86.06784</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 108 2008-12-01  76.9  81.05621  81.46351  82.03579</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 109 2009-01-01  72.7  79.90781  81.06476  81.12628</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 110 2009-02-01  72.1  82.41482  80.93470  80.75114</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 111 2009-03-01  78.1  79.93080  81.04200  82.04895</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 112 2009-04-01  81.1  83.80124  81.37796  81.72588</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 113 2009-05-01  87.2  81.44560  81.89503  82.66407</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 114 2009-06-01  93.4  82.74537  82.51690  82.35000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 115 2009-07-01  92.1  82.85902  83.15040  83.24454</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 116 2009-08-01  90.3  84.12922  83.78489  83.89529</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 117 2009-09-01  83.8  84.69762  84.34413  84.45627</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 118 2009-10-01  83.9  84.54197  84.75468  84.55400</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 119 2009-11-01  80.0  84.42242  85.02340  86.07074</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 120 2009-12-01  84.1  89.24783  85.14165  87.36576</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 121 2010-01-01  81.0  88.42702  85.13921  87.31139</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 122 2010-02-01  74.5  84.25932  84.99049  85.88708</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 123 2010-03-01  83.5  84.97490  84.70755  84.47438</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 124 2010-04-01  81.4  84.18893  84.29221  84.61563</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 125 2010-05-01  90.5  84.68304  83.84090  83.98334</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 126 2010-06-01  92.9  83.07806  83.54744  83.62892</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 127 2010-07-01  91.1  83.12565  83.57599  83.32288</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 128 2010-08-01  90.4  83.76493  83.96714  83.64898</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 129 2010-09-01  82.7  84.05637  84.71207  84.64244</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 130 2010-10-01  85.9  86.10603  85.72062  85.90001</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 131 2010-11-01  83.5  87.53763  86.80574  88.14375</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 132 2010-12-01  86.2  90.78758  87.80117  88.83621</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 133 2011-01-01  81.3  88.18343  88.58149  89.43589</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 134 2011-02-01  79.5  89.33667  89.10860  89.01914</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 135 2011-03-01  87.2  89.53731  89.41270  90.47262</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 136 2011-04-01  88.9  92.54389  89.52296  90.54284</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 137 2011-05-01  95.9  89.54732  89.53640  90.48932</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 138 2011-06-01  99.1  89.37676  89.53508  89.35880</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 139 2011-07-01  97.0  89.15230  89.58330  89.57624</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 140 2011-08-01  97.7  90.19964  89.76867  89.61636</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 141 2011-09-01  88.7  89.49714  90.17749  90.43407</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 142 2011-10-01  92.0  91.60543  90.84846  90.79088</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 143 2011-11-01  86.6  91.27006  91.69899  91.55766</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 144 2011-12-01  87.2  91.79748  92.61580  92.37281</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 145 2012-01-01  87.5  94.05088  93.48927  93.68759</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 146 2012-02-01  87.8  95.21441  94.26058  94.75189</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 147 2012-03-01  92.3  94.99038  94.91004  94.82326</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 148 2012-04-01  90.4  94.26499  95.38865  95.15140</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 149 2012-05-01 102.0  96.19883  95.80459  92.34068</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 150 2012-06-01  96.3  86.55821  96.18413  90.94814</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 151 2012-07-01  98.3  90.08738  96.54435  89.49015</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 152 2012-08-01  98.8  91.82487  96.85731  91.68748</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 153 2012-09-01  91.9  93.15020  97.07513  93.92626</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 154 2012-10-01  98.5  96.80370  97.26919  94.78963</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 155 2012-11-01  89.7  94.41500  97.49021  95.75115</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 156 2012-12-01  91.6  96.03476  97.68479  95.95412</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 157 2013-01-01  90.2  97.41261  97.69770  96.98903</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 158 2013-02-01  86.5  97.51972  97.46277  98.34353</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 159 2013-03-01  97.0 100.09827  97.01522  97.65238</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 160 2013-04-01  91.8  95.33914  96.59605  96.91023</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 161 2013-05-01 101.0  95.29328  96.33626  95.37970</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 162 2013-06-01 105.6  95.50668  96.25571  95.75893</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 163 2013-07-01 105.6  96.47683  96.44802  96.45639</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 164 2013-08-01 104.3  97.38567  96.71922  97.34339</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 165 2013-09-01  98.2  98.16766  96.83896  96.78972</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 166 2013-10-01  95.7  94.81584  96.61091  96.43660</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 167 2013-11-01  91.6  96.32628  96.04112  96.00948</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 168 2013-12-01  93.0  96.88631  95.30577  95.52840</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 169 2014-01-01  86.7  93.37261  94.66744  94.89294</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 170 2014-02-01  83.4  94.41991  94.31469  93.63312</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 171 2014-03-01  90.2  93.10683  94.24948  94.13592</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 172 2014-04-01  90.9  94.88103  94.42246  94.21029</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 173 2014-05-01  99.7  94.64301  94.74644  95.31977</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 174 2014-06-01 107.8  96.43528  95.12718  95.25769</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 175 2014-07-01 102.8  94.69480  95.38817  94.24398</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 176 2014-08-01  98.1  91.60186  95.50595  94.19397</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 177 2014-09-01  97.0  96.28524  95.48806  94.30529</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 178 2014-10-01  96.1  95.02877  95.27593  95.45440</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 179 2014-11-01  89.9  95.04921  94.94798  95.08568</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 180 2014-12-01  91.5  95.17907  94.54514  93.28008</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 181 2015-01-01  82.9  89.61196  94.19109  92.11948</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 182 2015-02-01  80.7  91.56741  93.93326  92.99957</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 183 2015-03-01  95.3  97.81935  93.80658  94.72398</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 184 2015-04-01  90.4  94.78518  93.75293  93.96513</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 185 2015-05-01  94.1  89.29085  93.64005  92.69407</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 186 2015-06-01 105.6  94.00618  93.41394  91.83519</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 187 2015-07-01 100.6  92.20854  93.02669  94.10589</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 188 2015-08-01 102.9  96.10295  92.49805  93.57332</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 189 2015-09-01  92.3  92.40846  91.90478  93.13682</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 190 2015-10-01  91.6  90.89906  91.27655  91.47168</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 191 2015-11-01  87.4  91.10750  90.56806  90.62162</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 192 2015-12-01  85.2  89.85829  89.80538  90.06132</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 193 2016-01-01  82.7  89.21817  89.15085  89.15086</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 194 2016-02-01  81.1  88.37611  88.76923  87.93853</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 195 2016-03-01  83.6  86.22131  88.81984  87.94080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 196 2016-04-01  85.5  89.22499  89.22546  88.38776</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 197 2016-05-01  95.5  89.71699  89.86916  90.11280</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 198 2016-06-01 101.1  91.39642  90.56677  90.85492</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 199 2016-07-01  99.5  91.45134  91.12844  91.54873</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 200 2016-08-01  99.2  91.79844  91.52720  91.39517</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 201 2016-09-01  90.4  90.93573  91.86549  91.95899</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 202 2016-10-01  94.0  93.14279  92.35116  91.84110</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 203 2016-11-01  88.1  91.44479  93.12882  92.83521</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 204 2016-12-01  88.4  93.91805  94.22953  95.09549</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 205 2017-01-01  93.7  99.92364  95.42093  96.83318</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 206 2017-02-01  85.3  96.65786  96.39242  98.13822</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 207 2017-03-01  95.3  97.83315  96.95080  97.30339</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 208 2017-04-01  92.3  97.41917  97.00610  97.48742</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 209 2017-05-01 104.1  97.20995  96.63065  96.27536</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 210 2017-06-01 104.2  94.19695  96.09009  95.91101</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 211 2017-07-01 105.4  96.32613  95.70579  95.41564</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 212 2017-08-01 102.3  95.72385  95.65389  95.73020</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 213 2017-09-01  94.2  95.14063  96.06223  95.89987</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 214 2017-10-01  98.5  96.83512  96.91052  96.97310</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 215 2017-11-01  95.0  98.94355  98.02835  97.90081</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 216 2017-12-01  91.6  97.92377  99.18098  99.13442</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 217 2018-01-01  94.9 100.53595 100.15612 100.29115</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 218 2018-02-01  90.7 102.41374 100.83819 101.34324</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 219 2018-03-01  98.3 101.08002 101.14940 101.47067</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 220 2018-04-01  96.2 100.91826 101.19200 100.91233</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 221 2018-05-01 107.0 100.73871 101.20464 100.96913</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 222 2018-06-01 111.4 101.25043 101.35858 101.17500</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 223 2018-07-01 112.4 101.53586 101.77407 101.64164</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 224 2018-08-01 109.3 102.13862 102.44229 102.14659</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 225 2018-09-01 100.8 102.76529 103.08684 103.16808</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 226 2018-10-01 106.7 104.60032 103.37327 103.54080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 227 2018-11-01 100.0 103.25680 103.15686 103.75418</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 228 2018-12-01  96.4 103.40542 102.50846 102.73353</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 229 2019-01-01  94.8 101.53836 101.71044 101.64064</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 230 2019-02-01  89.0  99.97813 101.00465 100.23902</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 231 2019-03-01  96.7  99.20056 100.58042 101.82841</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 232 2019-04-01 101.4 106.30654 100.56121 102.42771</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 233 2019-05-01 108.3 101.77601 100.86153 103.22793</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 234 2019-06-01 110.6 101.60124 101.22658 100.68248</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 235 2019-07-01 110.2  98.67017 101.45337 100.84247</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 236 2019-08-01 108.6 102.25600 101.55322 101.22792</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 237 2019-09-01 102.0 102.75759 101.57480 101.86325</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 238 2019-10-01 101.8 100.57616 101.65952 101.39756</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 239 2019-11-01  98.0 100.85893 101.79515 101.19319</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 240 2019-12-01  95.5 102.14447 101.88796 102.21354</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 241 2020-01-01  96.5 103.63722 101.80786 101.91521</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 242 2020-02-01  92.1  99.96395 101.58536  95.97496</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 243 2020-03-01  83.0  84.32370  83.02957  88.17089</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 244 2020-04-01  75.4  80.22503  82.78187  82.36861</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 245 2020-05-01  87.2  82.55709  82.52642  85.32364</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 246 2020-06-01 103.1  93.18879  94.17538  90.65374</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 247 2020-07-01 106.9  96.21535  93.77585  95.48981</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 248 2020-08-01 102.9  97.06530  93.11078  95.20632</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 249 2020-09-01  92.1  92.33833  92.26658  93.36432</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 250 2020-10-01  91.8  90.68934  91.46817  89.52001</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 251 2020-11-01  83.6  85.53236  90.87028  88.60539</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 252 2020-12-01  83.2  89.59447  90.68204  88.78584</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 253 2021-01-01  83.9  91.23069  90.96704  91.19903</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 254 2021-02-01  83.1  92.77193  91.70077  91.89006</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 255 2021-03-01  90.7  91.66755  92.68014  92.61302</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 256 2021-04-01  88.1  93.39957  93.69061  93.20506</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 257 2021-05-01  99.7  94.54808  94.46603  95.28650</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 258 2021-06-01 107.6  97.91186  94.91595  99.56538</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 259 2021-07-01 117.5 106.23620 105.47077 103.08072</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 260 2021-08-01 112.0 105.09411 105.55538 105.19315</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 261 2021-09-01 103.9 104.24914 105.65693 104.80678</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 262 2021-10-01 106.7 105.07708 106.00072 105.80317</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 263 2021-11-01 106.4 108.08328 106.70654 107.01293</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 264 2021-12-01 100.5 107.87843 107.62648 107.65132</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 265 2022-01-01  97.8 106.99224 108.48106 108.38889</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 266 2022-02-01  99.0 110.29599 109.05027 115.32593</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 267 2022-03-01 126.1 128.68956 127.98549 122.01458</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 268 2022-04-01 120.0 127.05819 127.58587 127.56716</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 269 2022-05-01 134.4 126.95373 126.80894 132.13211</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 270 2022-06-01 155.4 142.38441 125.92889 135.34433</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 271 2022-07-01 150.7 136.69484 125.07081 135.97225</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 272 2022-08-01 137.9 128.83752 124.29325 131.22128</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 273 2022-09-01 128.8 128.13148 123.48950 128.82924</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 274 2022-10-01 132.0 129.51873 122.49389 128.78344</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 275 2022-11-01 126.0 128.70012 121.31065 125.99645</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 276 2022-12-01 111.4 119.77050 119.91007 122.47467</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 277 2023-01-01 108.9 118.95338 118.32229 118.86896</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 278 2023-02-01 105.9 117.88301 116.72833 118.90035</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 279 2023-03-01 117.7 119.86465 115.36792 117.50802</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 280 2023-04-01 107.8 114.77640 114.58488 115.44109</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 281 2023-05-01 118.5 111.68221 114.46808 113.81833</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 282 2023-06-01 125.8 114.99637 114.93840 112.53228</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 283 2023-07-01 121.9 110.91825 115.97140 114.32227</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 284 2023-08-01 124.2 117.05220 117.23865 116.09481</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 285 2023-09-01 121.2 120.31399 118.19710 120.27167</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 286 2023-10-01 127.1 123.44881 118.30915 120.54319</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 287 2023-11-01 114.6 117.86677 117.42604 119.48571</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 288 2023-12-01 109.3 117.14154 115.90829 115.86648</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 289 2024-01-01 103.3 112.59114 114.21403 113.87119</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 290 2024-02-01 103.6 111.88089 112.56632 110.78115</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 291 2024-03-01 105.3 107.87144 111.11635 110.47408</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 292 2024-04-01 106.9 111.66991 109.83392 109.87511</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 293 2024-05-01 115.8 110.08397 108.51272 109.24282</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 294 2024-06-01 114.7 105.97456 106.95992 106.69655</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 295 2024-07-01 115.0 104.03113 105.13513 104.97407</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 296 2024-08-01 111.3 104.91651 103.27678 103.63046</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 297 2024-09-01 103.2 101.94373 101.79082 102.10953</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 298 2024-10-01 102.0  99.46834 100.91046 100.18806</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 299 2024-11-01  96.6  99.15210 100.66725 100.18140</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 300 2024-12-01  96.2 101.92375 100.84175 102.02423</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 301 2025-01-01  95.7 104.99684 101.26710 102.94735</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 302 2025-02-01  91.2 101.92145 101.76403        NA</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
