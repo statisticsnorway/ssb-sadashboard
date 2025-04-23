@@ -133,6 +133,8 @@ and store this code.}
 \item{cancel}{optional value to return when the user hits the \code{cancel}
 button, set to the supplied data by default.}
 
+\item{port}{4-digit port address}
+
 \item{...}{not in use.}
 }
 \value{

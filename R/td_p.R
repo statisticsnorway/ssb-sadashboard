@@ -8,7 +8,7 @@
 #' @export
 #'
 #' @examples
-#' time_series <- sadashboard::vhi[,"47"]
+#' time_series <- sadashboard::vhi[,"47.3"]
 #' my_model <- RJDemetra::x13(time_series,spec="RSA5c")
 #'
 #' td_p(my_model)

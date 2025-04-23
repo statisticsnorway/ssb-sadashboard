@@ -11,7 +11,7 @@ user_agent <- function() {
                        httr:::default_ua())
 
   if (Sys.getenv("DAPLA_REGION") == "" | Sys.getenv("DAPLA_ENVIRONMENT") == "" | Sys.getenv("DAPLA_SERVICE") == ""){
-    warning("Ukjent miljø. Denne funksjonene fungerer kun på Dapla og i produksjonssonen")
+    warning("Unknown environment. This function is for running on SSBs data platform")
   }
 
   return(user_agent)
@@ -384,6 +384,7 @@ add_constraint <- function(dt, constraint, type = "chr", default = ""){
 #'   and store this code.
 #' @param cancel optional value to return when the user hits the \code{cancel}
 #'   button, set to the supplied data by default.
+#' @param port 4-digit port address
 #' @param ... not in use.
 #'
 #' @return the edited data as a matrix or data.frame.
