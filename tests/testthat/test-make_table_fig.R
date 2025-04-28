@@ -44,7 +44,7 @@ test_that("make_table_fig works correctly with series_now", {
 test_that("is.nogood works correctly", {
   expect_true(is.nogood(NA))
   expect_true(is.nogood(NaN))
-  expect_true(is.nogood(NULL))
+  expect_error(is.nogood(NULL))
   expect_false(is.nogood(5))
   expect_false(is.nogood("text"))
   expect_false(is.nogood(TRUE))
