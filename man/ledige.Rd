@@ -3,17 +3,19 @@
 \docType{data}
 \name{ledige}
 \alias{ledige}
-\title{Ledige Stillinger}
+\title{Job Vacancies}
 \format{
-A time series object with 60 rows and 51 variables:
-\describe{
-  \item{..}{noe }
+R time series object with 21 columns and 60 rows.
+Columns contains various indexes for Norwegian job vacancy rates in various major industries (SIC2007).
+Indices are produced quarterly by Statistics Norway.
 }
+\source{
+From Statbank Norway. (April 11, 2025), https://www.ssb.no/en/statbank/table/08771/
 }
 \usage{
 ledige
 }
 \description{
-A time series object containing various Norwegian vacant positions from K1 2010 to K1 2025. Hentet fra statistikkbanken 07.04.25
+A time series object with unadjusted quarterly Norwegian job vacancy rates. Indexes from first quarter 2010 to fourth quarter 2024.
 }
 \keyword{datasets}
