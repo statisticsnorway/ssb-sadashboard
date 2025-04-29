@@ -13,8 +13,8 @@ inndata <- data.frame(
 )
 
 # Test 1: Default behavior when no additional parameters are passed
-test_that("makeparamfile sets default spec and userdefined", {
-  result <- makeparamfile(inndat = inndata)
+test_that("make_paramfile sets default spec and userdefined", {
+  result <- make_paramfile(inndat = inndata)
 
   # Check that the 'spec' is set to "RSA5c"
   expect_equal(result$spec[1], '\"RSA5c\"')
@@ -27,8 +27,8 @@ test_that("makeparamfile sets default spec and userdefined", {
 })
 
 # Test 2: Check that a custom 'spec' and other parameters are passed and set correctly
-test_that("makeparamfile accepts and processes custom parameters", {
-  result <- makeparamfile(inndat = inndata, spec = "RSA3", identification_end = "c(identaar,12)", usrdef.var = "custom_var")
+test_that("make_paramfile accepts and processes custom parameters", {
+  result <- make_paramfile(inndat = inndata, spec = "RSA3", identification_end = "c(identaar,12)", usrdef.var = "custom_var")
 
   # Check that the spec is correctly set to "RSA3"
   expect_equal(result$spec[1], '\"RSA3"')
@@ -41,16 +41,16 @@ test_that("makeparamfile accepts and processes custom parameters", {
 })
 
 # Test 3: Check that warnings are given for unknown parameters
-test_that("makeparamfile warns for unknown parameters", {
+test_that("make_paramfile warns for unknown parameters", {
   # Capture the warning
   expect_warning({
-    result <- makeparamfile(inndat = inndata, unknown_param = "unknown_value")
+    result <- make_paramfile(inndat = inndata, unknown_param = "unknown_value")
   }, "The parameter unknown_param is included, but is unknown in the list of parameters used in x13_both.")
 })
 
 # Test 4: Check that the resulting data frame has the correct structure and data
-test_that("makeparamfile generates the correct data frame structure", {
-  result <- makeparamfile(inndat = inndata)
+test_that("make_paramfile generates the correct data frame structure", {
+  result <- make_paramfile(inndat = inndata)
 
   # Check that the number of rows matches the number of time series columns in inndata
   expect_equal(nrow(result), ncol(inndata) - 1) # Exclude 'year' column
@@ -62,10 +62,10 @@ test_that("makeparamfile generates the correct data frame structure", {
 })
 
 # Test 5: Check that empty input data generates the correct output (edge case)
-test_that("makeparamfile handles empty input data", {
+test_that("make_paramfile handles empty input data", {
   empty_data <- data.frame(year = integer(0))
 
-  result <- makeparamfile(inndat = empty_data)
+  result <- make_paramfile(inndat = empty_data)
 
   # The result should still return a data frame with no rows but correct column names
   expect_equal(nrow(result), 0)
@@ -74,8 +74,8 @@ test_that("makeparamfile handles empty input data", {
 })
 
 # Test 6: Check when userdefined parameters are not passed
-test_that("makeparamfile adds default userdefined when not provided", {
-  result <- makeparamfile(inndat = inndata)
+test_that("make_paramfile adds default userdefined when not provided", {
+  result <- make_paramfile(inndat = inndata)
 
   # Check that the default userdefined values are applied
   expected_userdefined <- paste0('c("decomposition.a1", "decomposition.a6", "decomposition.a7", "decomposition.b1", "decomposition.d10", "decomposition.d11", "decomposition.d12", "decomposition.d13", "decomposition.d18", "diagnostics.seas-sa-friedman", "residuals.independence.value")')
@@ -83,10 +83,25 @@ test_that("makeparamfile adds default userdefined when not provided", {
 })
 
 # Test 7: Check for handling of logical and numeric inputs (edge cases)
-test_that("makeparamfile handles logical and numeric parameters", {
-  result <- makeparamfile(inndat = inndata, outlier.ao = TRUE, outlier.cv = 4)
+test_that("make_paramfile handles logical and numeric parameters", {
+  result <- make_paramfile(inndat = inndata, outlier.ao = TRUE, outlier.cv = 4)
 
   # Check that logical and numeric parameters are correctly converted to strings
   expect_equal(result$outlier.ao[1], "TRUE")
   expect_equal(result$outlier.cv[1], "4")
 })
+
+# Test 8: Check that inndat can be a multiple time series object
+test_that("make_paramfile handles logical and numeric parameters", {
+  result <- make_paramfile(inndat = sadashboard::vhi)
+
+  # Check that the 'spec' is set to "RSA5c"
+  expect_equal(result$spec[1], '\"RSA5c\"')
+
+  # Check that the 'userdefined' column is correctly set
+  expected_userdefined <- paste0('c("decomposition.a1", "decomposition.a6", "decomposition.a7", "decomposition.b1", "decomposition.d10", "decomposition.d11", "decomposition.d12", "decomposition.d13", "decomposition.d18", "diagnostics.seas-sa-friedman", "residuals.independence.value")')
+  #expected_userdefined_clean <- gsub("\n", "", expected_userdefined)
+  #expected_userdefined_cat <- gsub("\\s+", " ", expected_userdefined_clean)
+  expect_equal(result$userdefined[1], expected_userdefined)
+})
+
