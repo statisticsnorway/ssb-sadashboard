@@ -20,7 +20,7 @@ test_that("make_paramfile sets default spec and userdefined", {
   expect_equal(result$spec[1], '\"RSA5c\"')
 
   # Check that the 'userdefined' column is correctly set
-  expected_userdefined <- paste0('c("decomposition.a1", "decomposition.a6", "decomposition.a7", "decomposition.b1", "decomposition.d10", "decomposition.d11", "decomposition.d12", "decomposition.d13", "decomposition.d18", "diagnostics.seas-sa-friedman", "residuals.independence.value")')
+  expected_userdefined <- paste0('c("decomposition.a1", "decomposition.a6", "decomposition.a7", "decomposition.a8", "decomposition.b1", "decomposition.d10", "decomposition.d11", "decomposition.d12", "decomposition.d13", "decomposition.d18", "diagnostics.seas-sa-friedman", "residuals.independence.value")')
   #expected_userdefined_clean <- gsub("\n", "", expected_userdefined)
   #expected_userdefined_cat <- gsub("\\s+", " ", expected_userdefined_clean)
   expect_equal(result$userdefined[1], expected_userdefined)
@@ -78,7 +78,7 @@ test_that("make_paramfile adds default userdefined when not provided", {
   result <- make_paramfile(inndat = inndata)
 
   # Check that the default userdefined values are applied
-  expected_userdefined <- paste0('c("decomposition.a1", "decomposition.a6", "decomposition.a7", "decomposition.b1", "decomposition.d10", "decomposition.d11", "decomposition.d12", "decomposition.d13", "decomposition.d18", "diagnostics.seas-sa-friedman", "residuals.independence.value")')
+  expected_userdefined <- paste0('c("decomposition.a1", "decomposition.a6", "decomposition.a7", "decomposition.a8", "decomposition.b1", "decomposition.d10", "decomposition.d11", "decomposition.d12", "decomposition.d13", "decomposition.d18", "diagnostics.seas-sa-friedman", "residuals.independence.value")')
   expect_equal(result$userdefined[1], expected_userdefined)
 })
 
@@ -99,7 +99,7 @@ test_that("make_paramfile handles logical and numeric parameters", {
   expect_equal(result$spec[1], '\"RSA5c\"')
 
   # Check that the 'userdefined' column is correctly set
-  expected_userdefined <- paste0('c("decomposition.a1", "decomposition.a6", "decomposition.a7", "decomposition.b1", "decomposition.d10", "decomposition.d11", "decomposition.d12", "decomposition.d13", "decomposition.d18", "diagnostics.seas-sa-friedman", "residuals.independence.value")')
+  expected_userdefined <- paste0('c("decomposition.a1", "decomposition.a6", "decomposition.a7", "decomposition.a8", "decomposition.b1", "decomposition.d10", "decomposition.d11", "decomposition.d12", "decomposition.d13", "decomposition.d18", "diagnostics.seas-sa-friedman", "residuals.independence.value")')
   #expected_userdefined_clean <- gsub("\n", "", expected_userdefined)
   #expected_userdefined_cat <- gsub("\\s+", " ", expected_userdefined_clean)
   expect_equal(result$userdefined[1], expected_userdefined)
