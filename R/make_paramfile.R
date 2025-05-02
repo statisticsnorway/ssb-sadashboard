@@ -1,7 +1,8 @@
 
 #' Create an initial parameter file where all values in a column are the same
 #'
-#' @param inndat A data frame.
+#' @param inndat Either i) a multiple time series object or ii) a data frame with time variable in the first column.
+#' In both cases columns must be named.
 #' @param ... Additional arguments passed to x13_spec or x13_both
 #'
 #' @details
@@ -25,13 +26,13 @@
 #'  tidsserie_3 = ts3
 #')
 #'
-#' tf_test1 <- makeparamfile(inndat = inndata, spec="RSA3")
-#' tf_test2 <- makeparamfile(inndat = inndata,transform.function = "Auto", outlier.ao  = TRUE,
+#' tf_test1 <- make_paramfile(inndat = inndata, spec="RSA3")
+#' tf_test2 <- make_paramfile(inndat = inndata,transform.function = "Auto", outlier.ao  = TRUE,
 #'                           outlier.ls  =  TRUE, outlier.tc = FALSE,  corona= TRUE,
 #'                           outlier.from   =  "2022-04-01" , outlier.cv  = 4,
 #'                           identification_end = "c(identaar,12)", identify_outliers   = FALSE,
 #'                           x11.seasonalComp = TRUE, x11.seasonalma = "Msr")
-makeparamfile <- function(inndat,...) {
+make_paramfile <- function(inndat,...) {
 
   mulige_parametere <- combine_param_names(pickmdl::x13_both, RJDemetra::x13_spec)
   # Capture all the parameters passed to the function
@@ -43,7 +44,8 @@ makeparamfile <- function(inndat,...) {
 
   #Ensure 'userdefined' is included in the parameters
   if (!"userdefined" %in% names(params)) {
-    params$userdefined <- c("decomposition.a1","decomposition.a6","decomposition.a7","decomposition.b1", "decomposition.d10", "decomposition.d11", "decomposition.d12", "decomposition.d13", "decomposition.d18",
+    params$userdefined <- c("decomposition.a1","decomposition.a6","decomposition.a7","decomposition.a8","decomposition.b1",
+                            "decomposition.d10", "decomposition.d11", "decomposition.d12", "decomposition.d13", "decomposition.d18",
                             "diagnostics.seas-sa-friedman","residuals.independence.value")
   }
 
@@ -94,7 +96,12 @@ makeparamfile <- function(inndat,...) {
   if (ncol(df) == 1 && !"spec" %in% names(df)) {
     df <- cbind(df, spec = params$spec)
   }
-  datasett1 <- inndat[,-1]
+
+  datasett1 <- inndat
+  if(!is.ts(inndat)){
+    datasett1 <- inndat[,-1]
+  }
+
   serienavn <- c(colnames(datasett1))
 
   # Replicate the rows based on the length of inndat

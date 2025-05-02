@@ -13,5 +13,5 @@ test_that("make_quality_df works well", {
   expect_warning(make_quality_df(models_now),"Friedman-test and/or independence of residuals not included. NA inserted.")
 
   models_now <- list(model_td,model_wd)
-  expect_error(make_quality_df(models_now))
+  expect_warning(expect_error(make_quality_df(models_now)))
 })
