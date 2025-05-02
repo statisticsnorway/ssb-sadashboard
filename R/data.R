@@ -12,7 +12,7 @@
 "vhi"
 
 
-#' Job Vacanicies
+#' Job Vacancies
 #'
 #' A time series object with unadjusted quarterly Norwegian job vacancy rates. Indexes from first quarter 2010 to fourth quarter 2024.
 #'
@@ -21,4 +21,4 @@
 #' Indices are produced quarterly by Statistics Norway.
 #'
 #'@source From Statbank Norway. (April 11, 2025), https://www.ssb.no/en/statbank/table/08771/
-#'"ledige"
+"ledige"
