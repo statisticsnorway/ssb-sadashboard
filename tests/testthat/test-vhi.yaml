@@ -1,0 +1,50 @@
+Serie1:
+  spec: '"RSA5c"'
+  transform.function: '"Log"'
+  tradingdays.option: '"UserDefined"'
+  easter.enabled: 'FALSE'
+  usrdef.varEnabled: 'TRUE'
+  outlier.enabled: 'FALSE'
+  outlier.ao: 'TRUE'
+  outlier.ls: 'FALSE'
+  outlier.tc: 'FALSE'
+  usrdef.outliersEnabled: 'TRUE'
+  usrdef.var: kalender6
+  usrdef.varType: '"Calendar"'
+  outlier.from: '"2022-04-01"'
+  outlier.cv: '4'
+  automdl.enabled: 'FALSE'
+  identification_end: c(identaar,12)
+  identify_outliers: 'FALSE'
+  corona: 'TRUE'
+  old_crit2: 'FALSE'
+  pickmdl_method: '"first_tryautomdl"'
+  userdefined: c("decomposition.a1","decomposition.a6","decomposition.a7","decomposition.b1",
+    "decomposition.d10", "decomposition.d11", "decomposition.d12", "decomposition.d13",
+    "decomposition.d18", "diagnostics.seas-sa-friedman", "residuals.independence.value")
+  outlier.usedefcv: 'FALSE'
+Serie2:
+  spec: '"RSA5c"'
+  transform.function: '"Log"'
+  tradingdays.option: '"UserDefined"'
+  easter.enabled: 'FALSE'
+  usrdef.varEnabled: 'TRUE'
+  outlier.enabled: 'TRUE'
+  outlier.ao: 'TRUE'
+  outlier.ls: 'FALSE'
+  outlier.tc: 'FALSE'
+  usrdef.outliersEnabled: 'TRUE'
+  usrdef.var: kalendergml
+  usrdef.varType: '"Calendar"'
+  outlier.from: '"2022-04-01"'
+  outlier.cv: '4'
+  automdl.enabled: 'FALSE'
+  identification_end: c(identaar,12)
+  identify_outliers: 'FALSE'
+  corona: 'TRUE'
+  old_crit2: 'FALSE'
+  pickmdl_method: '"first_tryautomdl"'
+  userdefined: c("decomposition.a1","decomposition.a6","decomposition.a7","decomposition.b1",
+    "decomposition.d10", "decomposition.d11", "decomposition.d12", "decomposition.d13",
+    "decomposition.d18", "diagnostics.seas-sa-friedman", "residuals.independence.value")
+  outlier.usedefcv: 'FALSE'

@@ -40,6 +40,4 @@ test_that("make_quality_df works well", {
   expect_equal(nrow(tables_now[[2]]),2)
   expect_equal(ncol(tables_now[[2]]),9)
 
-
-
 })
