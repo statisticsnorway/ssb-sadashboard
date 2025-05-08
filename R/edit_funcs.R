@@ -63,7 +63,7 @@ convert_date <- function(date) {
 #'
 #' @param path String variable for the path and name of yaml contraints file.
 #'
-#' @returns A data frame object with the constrainst data as a data.frame object
+#' @returns A data frame object with the constraints data as a data.frame object
 #' @export
 read_yaml_constraints <- function(path){
   if (!requireNamespace("yaml", quietly = TRUE)) {
@@ -187,7 +187,7 @@ get_url <- function(port){
     usr <- Sys.getenv('JUPYTERHUB_SERVICE_PREFIX', '/')
     app_url <- paste0(domain, usr, "proxy/", port, "/")
   } else {
-    stop("data_edit_ssb() is designed to be run on SSBs Data platform. Please use data_edit() instead.")
+    app_url <- "not_ssb"
   }
   app_url
 }
@@ -242,15 +242,27 @@ edit_constraints <- function(dt){
 
   port <- get_port()
   url <- get_url(port)
-  message(cat("Edit data at: ", url, "\n"))
 
-  suppressMessages(
-    new_data <- data_edit_ssb(dt, viewer = "browser", port = port, col_options = get_column_list(dt))
-  )
+  if (url == "not_ssb"){
+    new_data <- DataEditR::data_edit(dt)
+  } else {
+    message(cat("Edit data at: ", url, "\n"))
 
-  if("outlier.from" %in% names(new_data)){ # Maybe need to do this for all dates?
-    new_data$outlier.from <- sapply(new_data$outlier.from, convert_date)
+    suppressMessages(
+      new_data <- data_edit_ssb(dt, viewer = "browser", port = port, col_options = get_column_list(dt))
+    )
   }
+
+  # Check and convert date columns
+  date_columns <- c("outlier.from")
+  for (dc in date_columns){
+    if(dc %in% names(new_data)){
+      new_data[,dc] <- sapply(new_data[,dc], convert_date)
+    }
+  }
+
+  # convert all variables to character
+  new_data[] <- lapply(new_data, as.character)
 
   new_data
 }
@@ -280,24 +292,40 @@ add_constraint <- function(dt, constraint, type = "chr", default = ""){
                     ncol = 1,
                     dimnames = list(NULL, constraint))
 
-  message(cat("Edit data at: ", url))
-
   col_options_list <- get_column_list(dt)
 
   if (type == "bool") col_options_list[constraint] = c(TRUE,FALSE)
   if (type == "date") col_options_list[constraint] = "date"
 
-  suppressMessages(
-    new_data <- data_edit_ssb(dt,
+  if (url == "not_ssb"){
+    new_data <- DataEditR::data_edit(dt,
                               viewer = "browser",
-                              port = port,
                               col_bind = new_col,
                               col_options = col_options_list
     )
-  )
-  if("outlier.from" %in% names(new_data)){ # Maybe need to do this for all dates?
-    new_data$outlier.from <- sapply(new_data$outlier.from, convert_date)
+  } else {
+    message(cat("Edit data at: ", url))
+
+    suppressMessages(
+      new_data <- data_edit_ssb(dt,
+                                viewer = "browser",
+                                port = port,
+                                col_bind = new_col,
+                                col_options = col_options_list
+      )
+    )
   }
+
+  # Check and convert date columns
+  date_columns <- c("outlier.from")
+  for (dc in date_columns){
+    if(dc %in% names(new_data)){
+      new_data[,dc] <- sapply(new_data[,dc], convert_date)
+    }
+  }
+
+  # convert all variables to character
+  new_data[] <- lapply(new_data, as.character)
 
   new_data
 }
