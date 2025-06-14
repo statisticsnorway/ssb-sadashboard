@@ -133,6 +133,9 @@ arima_results_frame <- function(models_in,n_digits,outlier_choiche,paramfile){#,
         if("corona" %in% colnames(paramfile)){
           if(paramfile$corona[which(paramfile$name == names(mysa)[[i]])]){
             outliers_number <- outliers_number - 25
+
+            ### Faa inn noe her om at definerte parametere ikke kan vaere i coronaperioden!
+
           }
         }
 
