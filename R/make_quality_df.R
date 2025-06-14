@@ -80,9 +80,16 @@ main_results_frame <- function(models_in,n_digits){#,model_names){
 }
 
 
-arima_results_frame <- function(models_in,n_digits){#,model_names){
+arima_results_frame <- function(models_in,n_digits,outlier_choiche,paramfile){#,model_names){
 
   arima_view <- NULL
+
+  if(!is.null(paramfile) & outlier_choiche==3 & !("corona" %in% colnames(paramfile))){
+    warning("Parameter corona not included in parameter file. All outliers listed.")
+  }
+  if(is.null(paramfile) & outlier_choiche>=3){
+    stop("Parameter file missing. Need to be given as input when outlier_choiche = 3")
+  }
 
   for(i in 1:length(models_in)){
 
@@ -95,6 +102,48 @@ arima_results_frame <- function(models_in,n_digits){#,model_names){
 
     ok_now <- pickmdl::ok(model_now)
     td_p_now <- td_p(model_now)
+
+    if(outlier_choiche == 1){
+      outliers_number <- model_now$regarima$model$spec_rslt[8][[1]]
+    }else if(outlier_choiche == 2){
+      outliers_number <- model_now$regarima$model$spec_rslt[8][[1]] - spec_def_outlier
+    }else if(outlier_choiche == 3){
+      if("corona" %in% colnames(paramfile)){
+        if(paramfile$corona[which(paramfile$name == names(mysa)[[i]])]){
+          outliers_number <- model_now$regarima$model$spec_rslt[8][[1]] - 25
+        }else{
+          outliers_number <- model_now$regarima$model$spec_rslt[8][[1]]
+        }
+      }else{
+        outliers_number <- model_now$regarima$model$spec_rslt[8][[1]]
+      }
+    }else if(outlier_choiche == 4){
+      outliers_number <-  model_now$regarima$model$spec_rslt[8][[1]]
+
+      if(all(c("usrdef.outliersEnabled","usrdef.outliersType", "usrdef.outliersDate") %in% colnames(paramfile))){
+
+        if(isTRUE(as.logical(paramfile$usrdef.outliersEnabled[[which(paramfile$name == names(mysa)[[i]])]]))){
+          type_now <- paramfile$usrdef.outliersType[[which(paramfile$name == names(mysa)[[i]])]]
+          type_now <- strsplit(gsub("c\\(|\\)", "", type_now), ", ")[[1]]
+          type_now <- gsub("\"", "", type_now)
+          spec_def_outlier <- length(type_now %in% c("AO","LS","TS","SO"))
+          outliers_number <- outliers_number - spec_def_outlier
+        }
+
+        if("corona" %in% colnames(paramfile)){
+          if(paramfile$corona[which(paramfile$name == names(mysa)[[i]])]){
+            outliers_number <- outliers_number - 25
+
+            ### Faa inn noe her om at definerte parametere ikke kan vaere i coronaperioden!
+
+          }
+        }
+
+      }else{
+        warning("Userdefined outliers not defined correctly in paramfile. All outliers listed.")
+      }
+
+    }
 
     arima_results_now  <- data.frame(Navn = name_now,
                                      log=ifelse(model_now$regarima$model$spec_rslt[3][[1]],"yes","no"),

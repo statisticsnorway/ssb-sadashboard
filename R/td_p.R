@@ -17,8 +17,8 @@
 
 td_p <- function(model_now){
 
-  if(TRUE %in% (rownames(model_now$regarima$regression.coefficients) %in% c("td15","td16","Week days","hverdag"))){
-    here_now <- which(rownames(model_now$regarima$regression.coefficients) %in% c("td15","td16", "Week days","hverdag"))
+  if(TRUE %in% (rownames(model_now$regarima$regression.coefficients) %in% c("td15","td16","Week days","hverdag","WorkingDays"))){
+    here_now <- which(rownames(model_now$regarima$regression.coefficients) %in% c("td15","td16", "Week days","hverdag","WorkingDays"))
     td_p_now <- tryCatch({stats::pt(abs(model_now$regarima$regression.coefficients[here_now,3]),
                                     model_now$regarima[[5]][3]-model_now$regarima[[5]][2],lower.tail=FALSE)},error=function(e){-99})
   }else if(TRUE %in% (rownames(model_now$regarima$regression.coefficients) %in% c("man","Monday"))){
