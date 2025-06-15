@@ -4,13 +4,17 @@
 \alias{make_quality_df}
 \title{Quality tables for Seasonal Adjustment with RJDemetra.}
 \usage{
-make_quality_df(models_in, n_digits = 2)
+make_quality_df(models_in, n_digits = 2, outlier_choiche = 1, spec_file = NULL)
 }
 \arguments{
 \item{models_in}{list of relevant models. List of output objects from x13_pickmdl()-function. \cr
 See examples for details.}
 
 \item{n_digits}{number of printed digits. Default is 2.}
+
+\item{outlier_choiche}{how to count outliers. Default is 1.}
+
+\item{spec_file}{data frame with specifications. Only needed when outlier_choiche is set to 3 or 4. This is the data frame with specifications as used in x13_text_frame().}
 }
 \value{
 A list of data frames.

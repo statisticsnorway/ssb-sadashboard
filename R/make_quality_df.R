@@ -8,7 +8,7 @@
 #' See examples for details.
 #' @param n_digits number of printed digits. Default is 2.
 #' @param outlier_choiche how to count outliers. Default is 1.
-#' @param paramfile data frame with parameters. Only needed when outlier_choiche is set to 3 or 4. This is the data frame with parameter as used in x13_text_frame().
+#' @param spec_file data frame with specifications. Only needed when outlier_choiche is set to 3 or 4. This is the data frame with specifications as used in x13_text_frame().
 #' @return A list of data frames.
 #' @export
 #'
@@ -39,14 +39,14 @@
 #' regarima_indicators <- my_quality[[2]]
 
 
-make_quality_df <- function(models_in,n_digits=2,outlier_choiche,paramfile){
+make_quality_df <- function(models_in,n_digits=2,outlier_choiche=1,spec_file=NULL){
 
   if(is.null(names(models_in))){
     warning("List with models must be named! Use names(models_in).")
   }
 
   main_view <- main_results_frame(models_in,n_digits)
-  arima_view <- arima_results_frame(models_in,n_digits,outlier_choiche,paramfile)
+  arima_view <- arima_results_frame(models_in,n_digits,outlier_choiche,spec_file)
 
   if(is.null(models_in[[1]][["user_defined"]][["residuals.independence.value"]])|
      is.null(models_in[[1]][["user_defined"]][["diagnostics.seas-sa-friedman"]])){
@@ -82,14 +82,14 @@ main_results_frame <- function(models_in,n_digits){#,model_names){
 }
 
 
-arima_results_frame <- function(models_in,n_digits,outlier_choiche,paramfile){#,model_names){
+arima_results_frame <- function(models_in,n_digits,outlier_choiche,spec_file){#,model_names){
 
   arima_view <- NULL
 
-  if(!is.null(paramfile) & outlier_choiche==3 & !("corona" %in% colnames(paramfile))){
+  if(!is.null(spec_file) & outlier_choiche==3 & !("corona" %in% colnames(spec_file))){
     warning("The parameter corona not included in parameter file. All outliers listed.")
   }
-  if(is.null(paramfile) & outlier_choiche %in% c(3,4)){
+  if(is.null(spec_file) & outlier_choiche %in% c(3,4)){
     stop("Parameter file missing. Need to be given as input when outlier_choiche = 3 or outlier_choiche = 4.")
   }
   if(outlier_choiche > 4 | outlier_choiche < 1){
@@ -113,8 +113,8 @@ arima_results_frame <- function(models_in,n_digits,outlier_choiche,paramfile){#,
     }else if(outlier_choiche == 2){
       outliers_number <- model_now$regarima$model$spec_rslt[8][[1]] - spec_def_outlier
     }else if(outlier_choiche == 3){
-      if("corona" %in% colnames(paramfile)){
-        if(paramfile$corona[which(paramfile$name == names(mysa)[[i]])]){
+      if("corona" %in% colnames(spec_file)){
+        if(spec_file$corona[which(spec_file$name == names(models_in)[[i]])]){
           outliers_number <- model_now$regarima$model$spec_rslt[8][[1]] - 25
         }else{
           outliers_number <- model_now$regarima$model$spec_rslt[8][[1]]
@@ -126,16 +126,16 @@ arima_results_frame <- function(models_in,n_digits,outlier_choiche,paramfile){#,
       outliers_number <-  model_now$regarima$model$spec_rslt[8][[1]]
       outliers_twice <- 0
 
-      if(all(c("usrdef.outliersEnabled","usrdef.outliersType", "usrdef.outliersDate") %in% colnames(paramfile))){
+      if(all(c("usrdef.outliersEnabled","usrdef.outliersType", "usrdef.outliersDate") %in% colnames(spec_file))){
 
-        if(isTRUE(as.logical(paramfile$usrdef.outliersEnabled[[which(paramfile$name == names(mysa)[[i]])]]))){
-          type_now <- paramfile$usrdef.outliersType[[which(paramfile$name == names(mysa)[[i]])]]
+        if(isTRUE(as.logical(spec_file$usrdef.outliersEnabled[[which(spec_file$name == names(models_in)[[i]])]]))){
+          type_now <- spec_file$usrdef.outliersType[[which(spec_file$name == names(models_in)[[i]])]]
           type_now <- strsplit(gsub("c\\(|\\)", "", type_now), ", ")[[1]]
           type_now <- gsub("\"", "", type_now)
           spec_def_outlier <- length(type_now %in% c("AO","LS","TS","SO"))
           outliers_number <- outliers_number - spec_def_outlier
 
-          def_date_now <- paramfile$usrdef.outliersDate[[which(paramfile$name == names(mysa)[[i]])]]
+          def_date_now <- spec_file$usrdef.outliersDate[[which(spec_file$name == names(models_in)[[i]])]]
           def_date_now <- strsplit(gsub("c\\(|\\)", "", def_date_now), ", ")[[1]]
           def_date_now <- gsub("\"", "", def_date_now)
 
@@ -144,15 +144,15 @@ arima_results_frame <- function(models_in,n_digits,outlier_choiche,paramfile){#,
 
         }
 
-        if("corona" %in% colnames(paramfile)){
-          if(paramfile$corona[which(paramfile$name == names(mysa)[[i]])]){
+        if("corona" %in% colnames(spec_file)){
+          if(spec_file$corona[which(spec_file$name == names(models_in)[[i]])]){
             outliers_number <- outliers_number - 25 + outliers_twice
 
           }
         }
 
       }else{
-        warning(paste0(name_now,": Userdefined outliers not defined correctly in paramfile. All outliers listed."))
+        warning(paste0(name_now,": Userdefined outliers not defined correctly in spec_file. All outliers listed."))
       }
 
     }
