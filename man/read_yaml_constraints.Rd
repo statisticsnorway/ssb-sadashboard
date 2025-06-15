@@ -10,7 +10,7 @@ read_yaml_constraints(path)
 \item{path}{String variable for the path and name of yaml contraints file.}
 }
 \value{
-A data frame object with the constrainst data as a data.frame object
+A data frame object with the constraints data as a data.frame object
 }
 \description{
 Read in yaml file with constraints information

@@ -98,7 +98,7 @@ make_paramfile <- function(inndat,...) {
   }
 
   datasett1 <- inndat
-  if(!is.ts(inndat)){
+  if(!stats::is.ts(inndat)){
     datasett1 <- inndat[,-1]
   }
 

@@ -12,6 +12,8 @@ sa_quality_report(
   group_series = NULL,
   plots_included = TRUE,
   plot_start = NULL,
+  outlier_choiche = 1,
+  spec_file = NULL,
   linearized = FALSE,
   cal_adjust = FALSE,
   ma_filter = FALSE,
@@ -36,8 +38,18 @@ Preferably, groups should be named. If names(group_series) = NULL, some headers 
 
 \item{plot_start}{Start date of time axis in plot. If NULL, the whole time series is plotted. Default is NULL.}
 
+\item{outlier_choiche}{how to count outliers in report. Default is 1. \cr
+* '1' : All outliers are counted.
+* '2' : Only outliers after identification end are counted, i.e. only outliers after date of model choice are counted.
+When identification end is not defined, all outliers that are not pre-specified are counted.
+* '3' : When corona = TRUE, only outliers outside corona period are counted. When corona = FALSE, all outliers are counted.
+* '4' : All outliers that are not pre-specified are counted. To be used when identification end is defined but user want to
+ count all outliers that are not pre-defined.}
+
+\item{spec_file}{When outlier_choiche is 3 or 4, the data frame with parameters used in x_13_text_frame() needs to be given as input. Default is NULL.}
+
 \item{linearized}{Linearized series to be shown in plots? Default is FALSE.
-"decomposition.b1" must be userdefined in x13_pickmdl() for cal_adjust to be calculated.}
+"decomposition.b1" must be userdefined in x13_pickmdl() for linearized to be calculated.}
 
 \item{cal_adjust}{Calender adjusted times series to be shown in plots? Default is FALSE.
 "decomposition.a8" and "decomposition.b1" must be userdefined in x13_pickmdl() for cal_adjust to be calculated.}
