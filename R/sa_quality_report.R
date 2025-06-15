@@ -16,12 +16,11 @@
 #' @param plot_start Start date of time axis in plot. If NULL, the whole time series is plotted. Default is NULL.
 #' @param outlier_choiche how to count outliers in report. Default is 1. \cr
 #'  * '1' : All outliers are counted.
-#'  * '2' : Only outliers after identification end are counted, i.e. only outliers after date of model choice are counted.
-#'  When identification end is not defined, all outliers that are not pre-specified are counted.
+#'  * '2' : Only outliers after identification end are counted, i.e. only after date of ARIMA model choice.
+#'  Only to be used when identification end is defined (outliers will be counted as 0 otherwise).
 #'  * '3' : When corona = TRUE, only outliers outside corona period are counted. When corona = FALSE, all outliers are counted.
-#'  * '4' : All outliers that are not pre-specified are counted. To be used when identification end is defined but user want to
-#'   count all outliers that are not pre-defined.
-#' @param spec_file When outlier_choiche is 3 or 4, the data frame with parameters used in x_13_text_frame() needs to be given as input. Default is NULL.
+#'  * '4' : All outliers that are not pre-specified are counted.
+#' @param spec_file When outlier_choiche is 3 or 4, data frame with specifications (used in x_13_text_frame()) needs to be given as input. Default is NULL.
 #' @param linearized Linearized series to be shown in plots? Default is FALSE.
 #' "decomposition.b1" must be userdefined in x13_pickmdl() for linearized to be calculated.
 #' @param cal_adjust Calender adjusted times series to be shown in plots? Default is FALSE.
