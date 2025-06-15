@@ -7,8 +7,8 @@
 #' @param models_in list of relevant models. List of output objects from x13_pickmdl()-function. \cr
 #' See examples for details.
 #' @param n_digits number of printed digits. Default is 2.
-#' @param outlier_choiche code for how to count outliers in report.
-#' @param paramfile data frame with parameters. Only needed when outlier_choiche is set to 3 or 4. The same data frame as used in x13textframe().
+#' @param outlier_choiche how to count outliers. Default is 1.
+#' @param paramfile data frame with parameters. Only needed when outlier_choiche is set to 3 or 4. This is the data frame with parameter as used in x13_text_frame().
 #' @return A list of data frames.
 #' @export
 #'
