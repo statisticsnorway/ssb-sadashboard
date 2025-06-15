@@ -7,6 +7,8 @@
 #' @param models_in list of relevant models. List of output objects from x13_pickmdl()-function. \cr
 #' See examples for details.
 #' @param n_digits number of printed digits. Default is 2.
+#' @param outlier_choiche code for how to count outliers in report.
+#' @param paramfile data frame with parameters. Only needed when outlier_choiche is set to 3 or 4. The same data frame as used in x13textframe().
 #' @return A list of data frames.
 #' @export
 #'
@@ -37,14 +39,14 @@
 #' regarima_indicators <- my_quality[[2]]
 
 
-make_quality_df <- function(models_in,n_digits=2){
+make_quality_df <- function(models_in,n_digits=2,outlier_choiche,paramfile){
 
   if(is.null(names(models_in))){
     warning("List with models must be named! Use names(models_in).")
   }
 
   main_view <- main_results_frame(models_in,n_digits)
-  arima_view <- arima_results_frame(models_in,n_digits)
+  arima_view <- arima_results_frame(models_in,n_digits,outlier_choiche,paramfile)
 
   if(is.null(models_in[[1]][["user_defined"]][["residuals.independence.value"]])|
      is.null(models_in[[1]][["user_defined"]][["diagnostics.seas-sa-friedman"]])){
@@ -85,10 +87,13 @@ arima_results_frame <- function(models_in,n_digits,outlier_choiche,paramfile){#,
   arima_view <- NULL
 
   if(!is.null(paramfile) & outlier_choiche==3 & !("corona" %in% colnames(paramfile))){
-    warning("Parameter corona not included in parameter file. All outliers listed.")
+    warning("The parameter corona not included in parameter file. All outliers listed.")
   }
-  if(is.null(paramfile) & outlier_choiche>=3){
-    stop("Parameter file missing. Need to be given as input when outlier_choiche = 3")
+  if(is.null(paramfile) & outlier_choiche %in% c(3,4)){
+    stop("Parameter file missing. Need to be given as input when outlier_choiche = 3 or outlier_choiche = 4.")
+  }
+  if(outlier_choiche > 4 | outlier_choiche < 1){
+    stop("The parameter outlier_choiche must be between 1 and 4.")
   }
 
   for(i in 1:length(models_in)){
@@ -119,6 +124,7 @@ arima_results_frame <- function(models_in,n_digits,outlier_choiche,paramfile){#,
       }
     }else if(outlier_choiche == 4){
       outliers_number <-  model_now$regarima$model$spec_rslt[8][[1]]
+      outliers_twice <- 0
 
       if(all(c("usrdef.outliersEnabled","usrdef.outliersType", "usrdef.outliersDate") %in% colnames(paramfile))){
 
@@ -128,19 +134,25 @@ arima_results_frame <- function(models_in,n_digits,outlier_choiche,paramfile){#,
           type_now <- gsub("\"", "", type_now)
           spec_def_outlier <- length(type_now %in% c("AO","LS","TS","SO"))
           outliers_number <- outliers_number - spec_def_outlier
+
+          def_date_now <- paramfile$usrdef.outliersDate[[which(paramfile$name == names(mysa)[[i]])]]
+          def_date_now <- strsplit(gsub("c\\(|\\)", "", def_date_now), ", ")[[1]]
+          def_date_now <- gsub("\"", "", def_date_now)
+
+          corona_dates <- seq(as.Date("2020-03-01"), as.Date("2022-03-01"),by = "1 month")
+          outliers_twice <- sum(def_date_now %in% corona_dates)
+
         }
 
         if("corona" %in% colnames(paramfile)){
           if(paramfile$corona[which(paramfile$name == names(mysa)[[i]])]){
-            outliers_number <- outliers_number - 25
-
-            ### Faa inn noe her om at definerte parametere ikke kan vaere i coronaperioden!
+            outliers_number <- outliers_number - 25 + outliers_twice
 
           }
         }
 
       }else{
-        warning("Userdefined outliers not defined correctly in paramfile. All outliers listed.")
+        warning(paste0(name_now,": Userdefined outliers not defined correctly in paramfile. All outliers listed."))
       }
 
     }
