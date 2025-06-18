@@ -129,25 +129,20 @@ arima_results_frame <- function(models_in,n_digits,outlier_choiche,spec_file){#,
       if(all(c("usrdef.outliersEnabled","usrdef.outliersType", "usrdef.outliersDate") %in% colnames(spec_file))){
 
         if(isTRUE(as.logical(spec_file$usrdef.outliersEnabled[[which(spec_file$name == names(models_in)[[i]])]]))){
-          type_now <- spec_file$usrdef.outliersType[[which(spec_file$name == names(models_in)[[i]])]]
-          type_now <- strsplit(gsub("c\\(|\\)", "", type_now), ", ")[[1]]
-          type_now <- gsub("\"", "", type_now)
-          spec_def_outlier <- length(type_now %in% c("AO","LS","TS","SO"))
+          type_now <- eval(parse(text=spec_file$usrdef.outliersType[[which(spec_file$name == names(models_in)[[i]])]]))
+          spec_def_outlier = length(type_now)
           outliers_number <- outliers_number - spec_def_outlier
 
-          def_date_now <- spec_file$usrdef.outliersDate[[which(spec_file$name == names(models_in)[[i]])]]
-          def_date_now <- strsplit(gsub("c\\(|\\)", "", def_date_now), ", ")[[1]]
-          def_date_now <- gsub("\"", "", def_date_now)
+          def_date_now <- eval(parse(text=spec_file$usrdef.outliersDate[[which(spec_file$name == names(models_in)[[i]])]]))
 
           corona_dates <- seq(as.Date("2020-03-01"), as.Date("2022-03-01"),by = "1 month")
-          outliers_twice <- sum(def_date_now %in% corona_dates)
+          outliers_twice <- sum(as.Date(def_date_now) %in% corona_dates)
 
         }
 
         if("corona" %in% colnames(spec_file)){
-          if(spec_file$corona[which(spec_file$name == names(models_in)[[i]])]){
+          if(isTRUE(spec_file$corona[which(spec_file$name == names(models_in)[[i]])])){
             outliers_number <- outliers_number - 25 + outliers_twice
-
           }
         }
 
