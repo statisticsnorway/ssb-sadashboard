@@ -6,7 +6,7 @@
 #'
 #' @param view_now A data frame with quality indicators. Output from make_quality_df().
 #' @param series_now names of series to be included in the table. If NULL all series are included.
-#' @return A data frame with quality indicators, including color coding.
+#' @return A data frame with quality indicators, color coded with kableExtra.
 #' @export
 #'
 #' @examples

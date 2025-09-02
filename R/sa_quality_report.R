@@ -1,34 +1,33 @@
 #' Quality Report for Seasonal Adjustment with RJDemetra.
 #'
-#' Wrapper function for creating a html-document with interactive quality report for seasonal adjustment with RJdemetra.
-#' The quality report includes tables with selected quality indicators. User may also choose to include interactive plots
-#' of seasonally adjusted time series.
+#' Function for creating a quality report for seasonal adjustment with RJdemetra.
 #'
 #' @param models_in List of output objects from x13_pickmdl()-function. \cr
-#' Must be named, names(models_in) cannot be empty.
+#' Must be named, i.e. names(models_in) can not be empty.
 #' @param report_file Name of output file, including path.
 #' @param title Title of the report. Default is NULL.
 #' @param author Author of the report. Default is NULL.
-#' @param group_series List of vectors of model names. For structuring of tables and plots. \cr
+#' @param group_series List of vectors with model names that defines structuring of tables and plots. \cr
 #' If NULL, all models are included in a single table. See examples. Default is NULL. \cr
-#' Preferably, groups should be named. If names(group_series) = NULL, some headers in output are empty.
 #' @param plots_included If TRUE, interactive plots are included in the report. Default is TRUE
 #' @param plot_start Start date of time axis in plot. If NULL, the whole time series is plotted. Default is NULL.
-#' @param outlier_choiche how to count outliers in report. Default is 1. \cr
-#'  1: All outliers are counted.
-#'  2 : When identifcation_end = TRUE and identify_outliers = TRUE (default), only outliers after identification end are counted, i.e. only after date of ARIMA model choice.
+#' @param outlier_choiche How outliers are counted \cr
+#' \itemize{
+#'  \item 1: All outliers are counted.
+#'  \item 2: When identifcation_end = TRUE and identify_outliers = TRUE (default), only outliers after identification end are counted, i.e. only after date of ARIMA model choice.
 #'  When identification_end = TRUE and identify_outliers = FALSE, all outliers that are not pre-specified are counted.
 #'  When identification_end = FALSE, no outliers are counted.
-#'  3 : When corona = TRUE, only outliers outside corona period are counted. When corona = FALSE, all outliers are counted.
-#'  4 : All outliers that are not pre-specified are counted.
-#' @param spec_file When outlier_choiche is 3 or 4, data frame with specifications (used in x_13_text_frame()) needs to be given as input. Default is NULL.
-#' @param linearized Linearized series to be shown in plots? Default is FALSE.
+#'  \item 3: When corona = TRUE, only outliers outside corona period are counted. When corona = FALSE, all outliers are counted.
+#'  \item 4: All outliers that are not pre-specified are counted.}
+#'  Default is 1. \cr
+#' @param spec_file When outlier_choiche is 3 or 4, data frame with specifications must be given as input. Default is NULL.
+#' @param linearized Linearized series to be shown in plots? Default is FALSE. \cr
 #' "decomposition.b1" must be userdefined in x13_pickmdl() for linearized to be calculated.
-#' @param cal_adjust Calender adjusted times series to be shown in plots? Default is FALSE.
+#' @param cal_adjust Calender adjusted times series to be shown in plots? Default is FALSE. \cr
 #' "decomposition.a8" and "decomposition.b1" must be userdefined in x13_pickmdl() for cal_adjust to be calculated.
-#' @param ma_filter 1x3 asymmetric MA-filter to be shown in plots? Default is FALSE.
+#' @param ma_filter 1x3 symmetric MA-filter to be shown in plots? Default is FALSE.
 #' @param n_digits number of printed digits. Default is 2.
-#' @return A html-document with quality report created at selected path.
+#' @return A html-document with quality report created at path given in parameter report_file.
 #' @export
 #' @examples
 #'

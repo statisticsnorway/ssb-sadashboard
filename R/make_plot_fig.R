@@ -9,12 +9,12 @@
 #' @param plot_start Start date of time axis in plot.
 #' @param linearized Linearized times series to be shown in plots? Default is FALSE.
 #' @param cal_adjust Calender adjusted times series to be shown in plots? Default is FALSE.
-#' @param ma_filter 1x3 asymmetric MA-filter to be shown in plots? Default is FALSE.
+#' @param ma_filter 1x3 MA-filter to be shown in plots? Default is FALSE.
 #' @return List of plotly objects.
 #' @export
 #' @examples
 #'
-#' # Kommer noen eksempler her
+#'
 
 
 
