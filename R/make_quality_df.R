@@ -126,6 +126,12 @@ arima_results_frame <- function(models_in,n_digits,outlier_choiche,spec_file){#,
       outliers_number <-  model_now$regarima$model$spec_rslt[8][[1]]
       outliers_twice <- 0
 
+      if("corona" %in% colnames(spec_file)){
+        if(isTRUE(as.logical(spec_file$corona[which(spec_file$name == names(models_in)[[i]])]))){
+          outliers_number <- outliers_number - 25
+        }
+      }
+
       if(all(c("usrdef.outliersEnabled","usrdef.outliersType", "usrdef.outliersDate") %in% colnames(spec_file))){
 
         if(isTRUE(as.logical(spec_file$usrdef.outliersEnabled[[which(spec_file$name == names(models_in)[[i]])]]))){
@@ -133,23 +139,18 @@ arima_results_frame <- function(models_in,n_digits,outlier_choiche,spec_file){#,
           spec_def_outlier = length(type_now)
           outliers_number <- outliers_number - spec_def_outlier
 
-          def_date_now <- eval(parse(text=spec_file$usrdef.outliersDate[[which(spec_file$name == names(models_in)[[i]])]]))
+          if("corona" %in% colnames(spec_file)){
+            if(isTRUE(as.logical(spec_file$corona[which(spec_file$name == names(models_in)[[i]])]))){
+              def_date_now <- eval(parse(text=spec_file$usrdef.outliersDate[[which(spec_file$name == names(models_in)[[i]])]]))
 
-          corona_dates <- seq(as.Date("2020-03-01"), as.Date("2022-03-01"),by = "1 month")
-          outliers_twice <- sum(as.Date(def_date_now) %in% corona_dates)
+              corona_dates <- seq(as.Date("2020-03-01"), as.Date("2022-03-01"),by = "1 month")
+              outliers_twice <- sum(as.Date(def_date_now) %in% corona_dates)
 
-        }
-
-        if("corona" %in% colnames(spec_file)){
-          if(isTRUE(spec_file$corona[which(spec_file$name == names(models_in)[[i]])])){
-            outliers_number <- outliers_number - 25 + outliers_twice
+              outliers_number <- outliers_number + outliers_twice
+            }
           }
         }
-
-      }else{
-        warning(paste0(name_now,": Userdefined outliers not defined correctly in spec_file. All outliers listed."))
       }
-
     }
 
     arima_results_now  <- data.frame(Navn = name_now,
