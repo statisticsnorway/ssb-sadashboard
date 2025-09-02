@@ -12,7 +12,7 @@ To use the functions in `sadashboard` you should load the package with
 library(sadashboard)
 ```
 
-See the [Tutorial file](https://github.com/statisticsnorway/ssb-sadashboard/development/dapladagen2025.R) 
+See the [Tutorial file](https://github.com/statisticsnorway/ssb-sadashboard/blob/ffe_september/development/dapladagen2025.R) 
 
 ---------
 This package was initiated using [ssb-templater](https://github.com/statisticsnorway/ssb-templater).
