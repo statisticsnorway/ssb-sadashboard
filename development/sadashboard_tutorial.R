@@ -1,8 +1,7 @@
 #####################################################
 ###                                               ###
-###    Eksempler fra presentasjon av R-pakker     ###
-###    for sesongjustering på Dapla.              ###
-###    Dapladagen 2025.                           ###
+###    Tutorial for kvalitetsrapport              ###
+###    med sadashboard() og pickmdl()             ###
 ###                                               ###
 #####################################################
 
@@ -63,7 +62,7 @@ vhi_ts
 
 # definerer data_frame med spesfikasjoner for alle serier i vhi_ts:
 
-## corona = TRUE gir outliers i tråd med metodeseksjonens anbefalinger
+## corona = TRUE gir outliers i tråd med metodeseksjonens anbefalinger for pandemien mar2020-mar2022.
 ## outliers kan også legges inn manuelt.
 
 spec_file <- make_paramfile(inndat = vhi_ts,
@@ -212,7 +211,7 @@ mysa <- x13_text_frame(spec_file,series="vhi_ts",pickmdl_method="first_tryautomd
 mysa <- x13_text_frame(spec_file,series="vhi_ts",pickmdl_method="first_tryautomdl")
 
 # definerer path og navn på kvalitetsrapporten:
-path_now <- paste0(getwd(),"/dapladagen25.html")
+path_now <- paste0(getwd(),"/eksempelrapport.html")
 
 
 # Valgfri: gruppering av serier i rapporten.
@@ -225,14 +224,15 @@ names(groups_now) <- c("Main",groups_names)
 
 # Rapporten genereres med RMarkdown:
 
-sadashboard::sa_quality_report(mysa,report_file = path_now,title="Dapladagen 2025",author = "S811",
+sadashboard::sa_quality_report(mysa,report_file = path_now,title="Eksempelrapport",author = "SSB",
                                plot_start = "2018-01-01",cal_adjust = TRUE,linearized=TRUE,
                                group_series = groups_now)
 
 
-# For ikke å telle forhåndsdefinerte outliers må spec_file defineres som input:
+# Outliers kan telles på ulike måter. Se outlier_choiche. 
+# Obs! for ikke å telle forhåndsdefinerte outliers må spec_file defineres som input:
 
-sadashboard::sa_quality_report(mysa,report_file = path_now,title="Dapladagen 2025",author = "S811",
+sadashboard::sa_quality_report(mysa,report_file = path_now,title="Eksempelrapport",author = "SSB",
                                plot_start = "2018-01-01",cal_adjust = TRUE,linearized=TRUE,
                                spec_file=spec_file,outlier_choiche=4,
                                group_series = groups_now)
