@@ -63,7 +63,7 @@ vhi_ts
 
 # definerer data_frame med spesfikasjoner for alle serier i vhi_ts:
 
-## corona = TRUE gir outliers i tråd med metodeseksjonens anbefalinger
+## corona = TRUE gir outliers i tråd med metodeseksjonens anbefalinger for pandemien mar2020-mar2022.
 ## outliers kan også legges inn manuelt.
 
 spec_file <- make_paramfile(inndat = vhi_ts,
