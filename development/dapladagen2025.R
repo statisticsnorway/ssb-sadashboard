@@ -63,6 +63,9 @@ vhi_ts
 
 # definerer data_frame med spesfikasjoner for alle serier i vhi_ts:
 
+## corona = TRUE gir outliers i tråd med metodeseksjonens anbefalinger
+## outliers kan også legges inn manuelt.
+
 spec_file <- make_paramfile(inndat = vhi_ts,
                             spec= "RSA3",
                             transform.function = "Log",
@@ -73,7 +76,7 @@ spec_file <- make_paramfile(inndat = vhi_ts,
                             corona = TRUE,
                             usrdef.outliersEnabled= TRUE,
                             usrdef.outliersType = c("AO","LS","LS"),
-                            usrdef.outliersDate = c("2020-01-01","2020-03-01","2022-04-01"),
+                            usrdef.outliersDate = c("2020-01-01","2024-01-01","2024-04-01"),
                             easter.enabled = TRUE,
                             easter.duration = 3)
 
@@ -174,6 +177,9 @@ spec_file <- make_paramfile(inndat = vhi_ts,
                             transform.function = "Log",
                             tradingdays.option ="TradingDays",
                             corona = TRUE,
+                            usrdef.outliersEnabled= TRUE,
+                            usrdef.outliersType = c("AO","LS"),
+                            usrdef.outliersDate = c("2020-01-01","2024-01-01"),
                             identification_end = "c(identyear,12)")
 
 identyear <- as.integer(dplyr::last(time(vhi_ts))) - 1
@@ -223,3 +229,10 @@ sadashboard::sa_quality_report(mysa,report_file = path_now,title="Dapladagen 202
                                plot_start = "2018-01-01",cal_adjust = TRUE,linearized=TRUE,
                                group_series = groups_now)
 
+
+# For ikke å telle forhåndsdefinerte outliers må spec_file defineres som input:
+
+sadashboard::sa_quality_report(mysa,report_file = path_now,title="Dapladagen 2025",author = "S811",
+                               plot_start = "2018-01-01",cal_adjust = TRUE,linearized=TRUE,
+                               spec_file=spec_file,outlier_choiche=4,
+                               group_series = groups_now)
