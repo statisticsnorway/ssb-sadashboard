@@ -14,7 +14,7 @@
 renv::install("statisticsnorway/ssb-pickmdl")
 renv::install("statisticsnorway/ssb-sadashboard")
 
-Yrenv::install("DataEditR")
+renv::install("DataEditR")
 
 
 ###########
