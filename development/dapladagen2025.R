@@ -14,7 +14,7 @@
 renv::install("statisticsnorway/ssb-pickmdl")
 renv::install("statisticsnorway/ssb-sadashboard")
 
-Yrenv::install("DataEditR")
+renv::install("DataEditR")
 
 
 ###########
@@ -183,7 +183,7 @@ mysa <- x13_text_frame(spec_file, series="vhi_ts")
 
 #############
 ###
-### 5.Modellseleksjon, seleksjonsprosedyre
+### 6.Modellseleksjon, seleksjonsprosedyre
 ###
 #############
 
@@ -198,7 +198,7 @@ mysa <- x13_text_frame(spec_file,series="vhi_ts",pickmdl_method="first_tryautomd
 
 #############
 ###
-### 6. Kvalitetsrapport med sadashboard
+### 7. Kvalitetsrapport med sadashboard
 ###
 #############
 
