@@ -14,7 +14,7 @@
 renv::install("statisticsnorway/ssb-pickmdl")
 renv::install("statisticsnorway/ssb-sadashboard")
 
-renv::install("DataEditR")
+Yrenv::install("DataEditR")
 
 
 ###########
@@ -160,7 +160,7 @@ spec_now <- x13_spec(spec="RSA3",
 
 ## finner det siste fulle året i tidsserien.
 
-identyear <- as.integer(last(time(vhi_ts))) - 1
+identyear <- as.integer(dplyr::last(time(vhi_ts))) - 1
 
 # x13_pickmdl låser ARIMA-modellen med identification_end
 
@@ -176,7 +176,7 @@ spec_file <- make_paramfile(inndat = vhi_ts,
                             corona = TRUE,
                             identification_end = "c(identyear,12)")
 
-identyear <- as.integer(last(time(vhi_ts))) - 1
+identyear <- as.integer(dplyr::last(time(vhi_ts))) - 1
 
 mysa <- x13_text_frame(spec_file, series="vhi_ts")
 

@@ -272,7 +272,7 @@ edit_constraints <- function(dt){
 #'
 #' @param dt Data frame object
 #' @param constraint Name of the new constraint to be added
-#' @param type The type of constrain it is. "int" for integer, "bool" for boolean
+#' @param type The type of constraint it is. "int" for integer, "bool" for boolean
 #' @param default The default value to give the constraint
 #'
 #' @returns Updated constraint data frame object

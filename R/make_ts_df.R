@@ -2,7 +2,7 @@
 #'
 #' A function that creates a data frame with seasonally adjusted series from x13().
 #' Columns in the data frame are date, unadjusted series, seasonally adjusted series and trend.
-#' Optionally, linearized series, calendar adjusted series and 1x3 assymmetric MA-filter may be included.
+#' Optionally, linearized series, calendar adjusted series and 1x3 symmetric MA-filter may be included.
 #'
 #' @param model_now Output from x13() or x13_pickmdl().
 #' @param linearized Linearized times series (B1) to be included in data frame? Default is FALSE.
@@ -28,7 +28,7 @@
 #'              userdefined=c("decomposition.a8","decomposition.b1"))
 #' make_ts_df(my_model,cal_adjust=TRUE)
 #'
-#' # Include assymetric 1x3 MA-filter
+#' # Include 1x3 MA-filter
 #' make_ts_df(my_model,ma_filter=TRUE)
 #'
 

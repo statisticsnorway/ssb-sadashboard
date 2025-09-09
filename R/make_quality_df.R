@@ -4,10 +4,17 @@
 #' First data frame contains quality indicators for sesonality and residual seasonality.
 #' Second data frame contains quality indicators for pre-processing and RegARIMA-model.
 #'
-#' @param models_in list of relevant models. List of output objects from x13_pickmdl()-function. \cr
-#' See examples for details.
+#' @param models_in List of output objects from x13_pickmdl()-function. \cr
 #' @param n_digits number of printed digits. Default is 2.
-#' @param outlier_choiche how to count outliers. Default is 1.
+#' @param outlier_choiche How outliers are counted \cr
+#' \itemize{
+#'  \item 1: All outliers are counted.
+#'  \item 2: When identifcation_end = TRUE and identify_outliers = TRUE (default), only outliers after identification end are counted, i.e. only after date of ARIMA model choice.
+#'  When identification_end = TRUE and identify_outliers = FALSE, all outliers that are not pre-specified are counted.
+#'  When identification_end = FALSE, no outliers are counted.
+#'  \item 3: When corona = TRUE, only outliers outside corona period are counted. When corona = FALSE, all outliers are counted.
+#'  \item 4: All outliers that are not pre-specified are counted.}
+#'  Default is 1. \cr
 #' @param spec_file data frame with specifications. Only needed when outlier_choiche is set to 3 or 4. This is the data frame with specifications as used in x13_text_frame().
 #' @return A list of data frames.
 #' @export
@@ -126,6 +133,12 @@ arima_results_frame <- function(models_in,n_digits,outlier_choiche,spec_file){#,
       outliers_number <-  model_now$regarima$model$spec_rslt[8][[1]]
       outliers_twice <- 0
 
+      if("corona" %in% colnames(spec_file)){
+        if(isTRUE(as.logical(spec_file$corona[which(spec_file$name == names(models_in)[[i]])]))){
+          outliers_number <- outliers_number - 25
+        }
+      }
+
       if(all(c("usrdef.outliersEnabled","usrdef.outliersType", "usrdef.outliersDate") %in% colnames(spec_file))){
 
         if(isTRUE(as.logical(spec_file$usrdef.outliersEnabled[[which(spec_file$name == names(models_in)[[i]])]]))){
@@ -133,23 +146,18 @@ arima_results_frame <- function(models_in,n_digits,outlier_choiche,spec_file){#,
           spec_def_outlier = length(type_now)
           outliers_number <- outliers_number - spec_def_outlier
 
-          def_date_now <- eval(parse(text=spec_file$usrdef.outliersDate[[which(spec_file$name == names(models_in)[[i]])]]))
+          if("corona" %in% colnames(spec_file)){
+            if(isTRUE(as.logical(spec_file$corona[which(spec_file$name == names(models_in)[[i]])]))){
+              def_date_now <- eval(parse(text=spec_file$usrdef.outliersDate[[which(spec_file$name == names(models_in)[[i]])]]))
 
-          corona_dates <- seq(as.Date("2020-03-01"), as.Date("2022-03-01"),by = "1 month")
-          outliers_twice <- sum(as.Date(def_date_now) %in% corona_dates)
+              corona_dates <- seq(as.Date("2020-03-01"), as.Date("2022-03-01"),by = "1 month")
+              outliers_twice <- sum(as.Date(def_date_now) %in% corona_dates)
 
-        }
-
-        if("corona" %in% colnames(spec_file)){
-          if(isTRUE(spec_file$corona[which(spec_file$name == names(models_in)[[i]])])){
-            outliers_number <- outliers_number - 25 + outliers_twice
+              outliers_number <- outliers_number + outliers_twice
+            }
           }
         }
-
-      }else{
-        warning(paste0(name_now,": Userdefined outliers not defined correctly in spec_file. All outliers listed."))
       }
-
     }
 
     arima_results_now  <- data.frame(Navn = name_now,

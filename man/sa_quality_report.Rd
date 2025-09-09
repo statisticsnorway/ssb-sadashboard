@@ -22,7 +22,7 @@ sa_quality_report(
 }
 \arguments{
 \item{models_in}{List of output objects from x13_pickmdl()-function. \cr
-Must be named, names(models_in) cannot be empty.}
+Must be named, i.e. names(models_in) can not be empty.}
 
 \item{report_file}{Name of output file, including path.}
 
@@ -30,28 +30,29 @@ Must be named, names(models_in) cannot be empty.}
 
 \item{author}{Author of the report. Default is NULL.}
 
-\item{group_series}{List of vectors of model names. For structuring of tables and plots. \cr
-If NULL, all models are included in a single table. See examples. Default is NULL. \cr
-Preferably, groups should be named. If names(group_series) = NULL, some headers in output are empty.}
+\item{group_series}{List of vectors with model names that defines structuring of tables and plots. \cr
+If NULL, all models are included in a single table. See examples. Default is NULL. \cr}
 
 \item{plots_included}{If TRUE, interactive plots are included in the report. Default is TRUE}
 
 \item{plot_start}{Start date of time axis in plot. If NULL, the whole time series is plotted. Default is NULL.}
 
-\item{outlier_choiche}{how to count outliers in report. Default is 1. \cr
-* '1' : All outliers are counted.
-* '2' : Only outliers after identification end are counted, i.e. only outliers after date of model choice are counted.
-When identification end is not defined, all outliers that are not pre-specified are counted.
-* '3' : When corona = TRUE, only outliers outside corona period are counted. When corona = FALSE, all outliers are counted.
-* '4' : All outliers that are not pre-specified are counted. To be used when identification end is defined but user want to
- count all outliers that are not pre-defined.}
+\item{outlier_choiche}{How outliers are counted \cr
+\itemize{
+ \item 1: All outliers are counted.
+ \item 2: When identifcation_end = TRUE and identify_outliers = TRUE (default), only outliers after identification end are counted, i.e. only after date of ARIMA model choice.
+ When identification_end = TRUE and identify_outliers = FALSE, all outliers that are not pre-specified are counted.
+ When identification_end = FALSE, no outliers are counted.
+ \item 3: When corona = TRUE, only outliers outside corona period are counted. When corona = FALSE, all outliers are counted.
+ \item 4: All outliers that are not pre-specified are counted.}
+ Default is 1. \cr}
 
-\item{spec_file}{When outlier_choiche is 3 or 4, the data frame with parameters used in x_13_text_frame() needs to be given as input. Default is NULL.}
+\item{spec_file}{When outlier_choiche is 3 or 4, data frame with specifications must be given as input. Default is NULL.}
 
-\item{linearized}{Linearized series to be shown in plots? Default is FALSE.
+\item{linearized}{Linearized series to be shown in plots? Default is FALSE. \cr
 "decomposition.b1" must be userdefined in x13_pickmdl() for linearized to be calculated.}
 
-\item{cal_adjust}{Calender adjusted times series to be shown in plots? Default is FALSE.
+\item{cal_adjust}{Calender adjusted times series to be shown in plots? Default is FALSE. \cr
 "decomposition.a8" and "decomposition.b1" must be userdefined in x13_pickmdl() for cal_adjust to be calculated.}
 
 \item{ma_filter}{1x3 asymmetric MA-filter to be shown in plots? Default is FALSE.}
@@ -59,12 +60,10 @@ When identification end is not defined, all outliers that are not pre-specified 
 \item{n_digits}{number of printed digits. Default is 2.}
 }
 \value{
-A html-document with quality report created at selected path.
+A html-document with quality report created at path given in parameter report_file.
 }
 \description{
-Wrapper function for creating a html-document with interactive quality report for seasonal adjustment with RJdemetra.
-The quality report includes tables with selected quality indicators. User may also choose to include interactive plots
-of seasonally adjusted time series.
+Function for creating a quality report for seasonal adjustment with RJdemetra.
 }
 \examples{
 
