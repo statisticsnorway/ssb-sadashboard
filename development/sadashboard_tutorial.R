@@ -229,7 +229,8 @@ sadashboard::sa_quality_report(mysa,report_file = path_now,title="Eksempelrappor
                                group_series = groups_now)
 
 
-# For ikke å telle forhåndsdefinerte outliers må spec_file defineres som input:
+# Outliers kan telles på ulike måter. Se outlier_choiche. 
+# Obs! for ikke å telle forhåndsdefinerte outliers må spec_file defineres som input:
 
 sadashboard::sa_quality_report(mysa,report_file = path_now,title="Eksempelrapport",author = "SSB",
                                plot_start = "2018-01-01",cal_adjust = TRUE,linearized=TRUE,
