@@ -24,7 +24,7 @@ make_plot_fig(
 
 \item{cal_adjust}{Calender adjusted times series to be shown in plots? Default is FALSE.}
 
-\item{ma_filter}{1x3 asymmetric MA-filter to be shown in plots? Default is FALSE.}
+\item{ma_filter}{1x3 MA-filter to be shown in plots? Default is FALSE.}
 }
 \value{
 List of plotly objects.
@@ -33,8 +33,4 @@ List of plotly objects.
 A function that creates a list of interactive plots of time series seasonally adjusted with RJDemetra.
 Interactive plots are made with Plotly's R graphing library.
 Interactive plots show unadjusted series, seasonally adjusted series and trend.
-}
-\examples{
-
-# Kommer noen eksempler her
 }
