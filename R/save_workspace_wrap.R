@@ -10,31 +10,31 @@
 #' @export
 #' @examples
 #'
+#' my_sa_models <- list()
 #'
+#' vhi_ts <- sadashboard::vhi
+#'
+#' spec_file_vhi <- make_paramfile(inndat = vhi_ts,spec= "RSA3")
+#' my_sa_models[[1]] <- x13_text_frame(spec_file_vhi,series= "vhi_ts")
+#'
+#' ledige_ts <- sadashboard::ledige
+#' spec_file_ledige <- make_paramfile(inndat = ledige_ts,spec= "RSA3")
+#' my_sa_models[[2]] <- x13_text_frame(spec_file_ledige,series= "ledige_ts")
+#'
+#' save_workspace_wrap(models_in = my_sa_models,wk_names = c("vhi","ledige"),wk_file=paste0(getwd(),"/wk_example.xml"))
+
 
 save_workspace_wrap <- function(models_in,wk_names,wk_file){
   wk <- RJDemetra::new_workspace()
   if(length(models_in) == length(wk_names)){
     for(i in 1:length(models_in)){
-      #print(i)
-      new_multiprocessing(wk,wk_names[i])
+      RJDemetra::new_multiprocessing(wk,wk_names[i])
       for(j in 1:length(models_in[[i]])){
         sa_now <- models_in[[i]][j]
         sa_name_now <- names(models_in[[i]])[j]
-        add_sa_item(wk,wk_names[i],sa_now[[1]],sa_name_now)
+        RJDemetra::add_sa_item(wk,wk_names[i],sa_now[[1]],sa_name_now)
       }
     }
   }
-  save_workspace(wk,paste0("/buckets/produkt/sesongjustering/test_workspace.xml"))
+  save_workspace(wk,wk_file)
 }
-
-wk <- new_workspace()
-new_multiprocessing(wk, "tjenest_pit")
-
-for(i in 1:length(mysa)){
-  add_sa_item(wk,"tjenest_pit",mysa[[i]],names(mysa)[i])
-}
-
-
-save_workspace(wk, file.path(dir, "tjenest_pit.xml"))
-
