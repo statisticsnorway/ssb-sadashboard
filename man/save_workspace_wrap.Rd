@@ -4,20 +4,40 @@
 \alias{save_workspace_wrap}
 \title{Save RJDemetra output as Workspace}
 \usage{
-save_workspace_wrap(models_in, wk_names, wk_file)
+save_workspace_wrap(models_in, wk_file, wk_names = NULL, multi = FALSE)
 }
 \arguments{
-\item{models_in}{A list of output objects from the x13()-function. One list for each multi-document to be created in workspace.}
-
-\item{wk_names}{Vector with the names of the multi-documents to be created in workspace}
+\item{models_in}{A list of output objects from the x13()-function.}
 
 \item{wk_file}{File name (.xml), including path.}
+
+\item{wk_names}{Vector with the names of the multi-documents to be created in workspace. Default is NULL.}
+
+\item{multi}{Single or sa-processing units in workspace? Default is FALSE. \cr
+\itemize{
+ \item FALSE: Create a single sa-processing unit containing all series.
+ \item TRUE2: Create several sa-processing units. See examples.
+ }}
 }
 \description{
 A wrapper function that creates and saves a workspace with the selected RJDemetra output.
 The output is saved in a .xml-file that can be opened in JDemetra+, the graphical user interface.
 }
 \examples{
+
+library(pickmdl)
+
+# Create a single sa_processing unit in workspace
+
+vhi_ts <- sadashboard::vhi
+
+spec_file_vhi <- make_paramfile(inndat = vhi_ts,spec= "RSA3")
+
+mysa <- x13_text_frame(spec_file_vhi,series= "vhi_ts")
+
+save_workspace_wrap(models_in = mysa,wk_file=paste0(getwd(),"/wk_example.xml"))
+
+# Create several sa-processing units in workspace
 
 my_sa_models <- list()
 
@@ -30,5 +50,6 @@ ledige_ts <- sadashboard::ledige
 spec_file_ledige <- make_paramfile(inndat = ledige_ts,spec= "RSA3")
 my_sa_models[[2]] <- x13_text_frame(spec_file_ledige,series= "ledige_ts")
 
-save_workspace_wrap(models_in = my_sa_models,wk_names = c("vhi","ledige"),wk_file=paste0(getwd(),"/wk_example.xml"))
+save_workspace_wrap(models_in = my_sa_models,wk_names = c("vhi","ledige"),
+                  wk_file=paste0(getwd(),"/wk_example.xml"),multi=TRUE)
 }
