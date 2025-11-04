@@ -30,25 +30,21 @@ library(pickmdl)
 # Create a single sa_processing unit in workspace
 
 vhi_ts <- sadashboard::vhi
-
 spec_file_vhi <- make_paramfile(inndat = vhi_ts,spec= "RSA3")
+mysa_vhi <- x13_text_frame(spec_file_vhi,series= "vhi_ts")
 
-mysa <- x13_text_frame(spec_file_vhi,series= "vhi_ts")
-
-save_workspace_wrap(models_in = mysa,wk_file=paste0(getwd(),"/wk_example.xml"))
+save_workspace_wrap(models_in = mysa_vhi,wk_file=paste0(getwd(),"/wk_example.xml"))
 
 # Create several sa-processing units in workspace
 
-my_sa_models <- list()
-
-vhi_ts <- sadashboard::vhi
-
-spec_file_vhi <- make_paramfile(inndat = vhi_ts,spec= "RSA3")
-my_sa_models[[1]] <- x13_text_frame(spec_file_vhi,series= "vhi_ts")
-
 ledige_ts <- sadashboard::ledige
 spec_file_ledige <- make_paramfile(inndat = ledige_ts,spec= "RSA3")
-my_sa_models[[2]] <- x13_text_frame(spec_file_ledige,series= "ledige_ts")
+mysa_ledige <- x13_text_frame(spec_file_ledige, series = "ledige_ts")
+
+ my_sa_models <- list(
+   vhi = mysa_vhi,
+   ledige = mysa_ledige
+ )
 
 save_workspace_wrap(models_in = my_sa_models,wk_names = c("vhi","ledige"),
                   wk_file=paste0(getwd(),"/wk_example.xml"),multi=TRUE)

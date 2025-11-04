@@ -9,9 +9,8 @@ test_that("save_workspace_wrap works for single and multiple SA-processing units
   library(pickmdl)
 
   # --- Single SA-processing unit ---
-  vhi_ts <- sadashboard::vhi
-  spec_file_vhi <- make_paramfile(inndat = vhi_ts, spec = "RSA3")
-  sa_model_single <- x13_text_frame(spec_file_vhi, series = "vhi_ts")
+  sa_model_single <- list(vhi=RJDemetra::x13(sadashboard::vhi[,1],spec="RSA3"))
+
 
   wk_file_single <- tempfile(fileext = ".xml")
 
@@ -22,11 +21,10 @@ test_that("save_workspace_wrap works for single and multiple SA-processing units
   unlink(wk_file_single)
 
   # --- Multiple SA-processing units ---
-  ledige_ts <- sadashboard::ledige
-  spec_file_ledige <- make_paramfile(inndat = ledige_ts, spec = "RSA3")
+
   sa_model_multi <- list(
-    vhi = sa_model_single,
-    ledige = x13_text_frame(spec_file_ledige, series = "ledige_ts")
+    list(vhi=RJDemetra::x13(sadashboard::vhi[,1],spec="RSA3")),
+    list(ledige=RJDemetra::x13(sadashboard::ledige[,1],spec="RSA3"))
   )
 
   wk_file_multi <- tempfile(fileext = ".xml")
