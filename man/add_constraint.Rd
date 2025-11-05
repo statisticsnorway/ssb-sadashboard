@@ -11,7 +11,7 @@ add_constraint(dt, constraint, type = "chr", default = "")
 
 \item{constraint}{Name of the new constraint to be added}
 
-\item{type}{The type of constrain it is. "int" for integer, "bool" for boolean}
+\item{type}{The type of constraint it is. "int" for integer, "bool" for boolean}
 
 \item{default}{The default value to give the constraint}
 }

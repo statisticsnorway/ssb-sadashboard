@@ -12,7 +12,7 @@ make_table_fig(view_now, series_now = NULL)
 \item{series_now}{names of series to be included in the table. If NULL all series are included.}
 }
 \value{
-A data frame with quality indicators, including color coding.
+A data frame with quality indicators, color coded with kableExtra.
 }
 \description{
 A function that creates kableExtra tables to be presented in Rmarkdown report for seasonally adjusted data. \cr

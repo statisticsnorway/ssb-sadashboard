@@ -55,7 +55,7 @@ If NULL, all models are included in a single table. See examples. Default is NUL
 \item{cal_adjust}{Calender adjusted times series to be shown in plots? Default is FALSE. \cr
 "decomposition.a8" and "decomposition.b1" must be userdefined in x13_pickmdl() for cal_adjust to be calculated.}
 
-\item{ma_filter}{1x3 asymmetric MA-filter to be shown in plots? Default is FALSE.}
+\item{ma_filter}{1x3 symmetric MA-filter to be shown in plots? Default is FALSE.}
 
 \item{n_digits}{number of printed digits. Default is 2.}
 }
