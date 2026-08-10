@@ -25,13 +25,13 @@ RoxygenNote: 7.3.3
 Suggests: 
     testthat (>= 3.0.0),
     DataEditR,
-    yaml
+    yaml,
+    car
 Depends: 
     R (>= 3.5)
 URL: https://github.com/statisticsnorway/sadashboard, https://fictional-train-nrnzmge.pages.github.io/, https://github.com/statisticsnorway/ssb-sadashboard
 BugReports: https://github.com/statisticsnorway/ssb-sadashboard/issues
 Imports: 
-    car,
     dplyr,
     htmltools,
     kableExtra,

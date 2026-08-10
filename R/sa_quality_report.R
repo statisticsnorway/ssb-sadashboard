@@ -83,6 +83,10 @@ sa_quality_report <- function(models_in, report_file, title=NULL ,author = NULL,
     author <- ""
   }
 
+  if (!requireNamespace("car", quietly = TRUE) ) {
+    warning("Package 'car' is not installed. The package is required for 'td_p' to be calculated. 'td_p' set to NA in the quality report.")
+  }
+
   if(is.null(group_series)){
     group_series <- list()
     group_series[[1]] <- names(models_in)
